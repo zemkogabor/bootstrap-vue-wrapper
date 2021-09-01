@@ -13,5 +13,13 @@
   "dependencies": {
     "vue": "^3.0.0",
     "vue-i18n": "^9.1.6"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.4",
+    "semantic-release": "^17.0.4"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release",
   }
 }
