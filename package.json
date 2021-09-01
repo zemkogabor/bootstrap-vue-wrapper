@@ -10,11 +10,13 @@
     "type": "git",
     "url": "https://github.com/zemkogabor/boostrap-vue-wrapper"
   },
+  "main": "src/index.js",
   "dependencies": {
     "bootstrap": "^5.0.1",
     "bootstrap-icons": "^1.5.0",
     "vue": "^3.0.0",
-    "vue-i18n": "^9.1.6"
+    "vue-i18n": "^9.1.6",
+    "vue-router": "^4.0.5"
   },
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
