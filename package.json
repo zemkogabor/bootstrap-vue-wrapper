@@ -11,6 +11,7 @@
     "url": "https://github.com/zemkogabor/boostrap-vue-wrapper"
   },
   "dependencies": {
+    "bootstrap": "^5.0.1",
     "vue": "^3.0.0",
     "vue-i18n": "^9.1.6"
   },

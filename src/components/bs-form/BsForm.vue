@@ -21,6 +21,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * On submit event.
+     *
+     * @param event
+     */
     onSubmit(event) {
       event.preventDefault()
       this.submitClicked = true
