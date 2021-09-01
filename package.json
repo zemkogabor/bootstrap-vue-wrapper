@@ -20,6 +20,6 @@
     "semantic-release": "^17.0.4"
   },
   "scripts": {
-    "semantic-release": "semantic-release",
+    "semantic-release": "semantic-release"
   }
 }
