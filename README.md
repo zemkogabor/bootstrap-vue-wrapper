@@ -20,7 +20,6 @@ npm install boostrap-vue-wrapper
 
 ### Table:
 
-Template:
 ```html
 <bs-table
   class="table-striped table-hover"
@@ -30,16 +29,16 @@ Template:
   :is-loading="isLoading"
   @orderChanged="onOrderChanged"
 />
-```
 
-Import component:
-```
-import { BsTable } from 'boostrap-vue-wrapper'
+...
+
+<script>
+  import { BsTable } from 'boostrap-vue-wrapper'
+</script>
 ```
 
 ### Custom validation message:
 
-Parent component:
 ```html
 <bs-input
   id="emailInput"
