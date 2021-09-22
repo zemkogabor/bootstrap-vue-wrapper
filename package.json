@@ -36,5 +36,6 @@
     "eslint": "eslint '{**/*,*}.{js,ts,jsx,tsx,vue}'",
     "eslint:fix": "npm run eslint -- --fix",
     "semantic-release": "semantic-release"
-  }
+  },
+  "keywords": ["boostrap", "vue", "boostrap5", "vue3", "boostrap-vue", "boostrap wrapper"]
 }
