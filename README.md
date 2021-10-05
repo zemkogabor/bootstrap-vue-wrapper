@@ -1,11 +1,11 @@
-# Boostrap-Vue Wrapper
+# bootstrap-Vue Wrapper
 
-[![NPM version](https://img.shields.io/npm/v/boostrap-vue-wrapper.svg)](https://www.npmjs.com/package/boostrap-vue-wrapper)
+[![NPM version](https://img.shields.io/npm/v/bootstrap-vue-wrapper.svg)](https://www.npmjs.com/package/bootstrap-vue-wrapper)
 
 
 ## Requirements:
-- Boostrap 5
-- Boostrap icons
+- bootstrap 5
+- bootstrap icons
 - Vue i18n (for custom validation messages)
 - Vue router (for `<router-link>`)
 - Vue 3
@@ -13,7 +13,7 @@
 ## Install:
 
 ```bash
-npm install boostrap-vue-wrapper
+npm install bootstrap-vue-wrapper
 ```
 ## Examples:
 
@@ -33,7 +33,7 @@ npm install boostrap-vue-wrapper
 ...
 
 <script>
-  import { BsTable } from 'boostrap-vue-wrapper'
+  import { BsTable } from 'bootstrap-vue-wrapper'
 </script>
 ```
 

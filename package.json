@@ -1,14 +1,14 @@
 {
-  "name": "boostrap-vue-wrapper",
-  "version": "1.1.4",
-  "description": "Boostrap 5 components in Vue3 warapper.",
+  "name": "bootstrap-vue-wrapper",
+  "version": "1.0.0",
+  "description": "bootstrap 5 components in Vue3 warapper.",
   "author": "Gabor Zemko <gaborzemko@gmail.com>",
-  "homepage": "https://github.com/zemkogabor/boostrap-vue-wrapper",
+  "homepage": "https://github.com/zemkogabor/bootstrap-vue-wrapper",
   "private": false,
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zemkogabor/boostrap-vue-wrapper"
+    "url": "https://github.com/zemkogabor/bootstrap-vue-wrapper"
   },
   "main": "src/index.js",
   "dependencies": {
@@ -38,12 +38,12 @@
     "semantic-release": "semantic-release"
   },
   "keywords": [
-    "boostrap",
+    "bootstrap",
     "vue",
-    "boostrap5",
+    "bootstrap5",
     "vue3",
-    "boostrap-vue",
-    "boostrap wrapper",
+    "bootstrap-vue",
+    "bootstrap wrapper",
     "vuejs"
   ]
 }
