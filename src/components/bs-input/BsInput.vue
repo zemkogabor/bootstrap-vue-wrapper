@@ -9,7 +9,6 @@
     ref="validationTarget"
     :value="modelValue"
     v-bind="$attrs"
-    class="form-control"
     :aria-describedby="hint !== null ? getHintId() : null"
     @input="onInput"
     @invalid="onInvalid"
