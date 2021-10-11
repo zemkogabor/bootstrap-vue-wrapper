@@ -32,6 +32,9 @@ import { Modal } from 'bootstrap'
 export default {
   name: 'BsModal',
   props: {
+    /**
+     * Modal title
+     */
     title: {
       type: String,
       required: true,
