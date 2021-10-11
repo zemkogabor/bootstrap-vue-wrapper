@@ -5,6 +5,7 @@ import BsTextarea from './components/bs-textarea/BsTextarea.vue'
 import BsPaginator from './components/bs-paginator/BsPaginator.vue'
 import BsTable from './components/bs-table/BsTable.vue'
 import BsToast from './components/bs-toast/BsToast.vue'
+import BsModal from './components/bs-modal/BsModal.vue'
 import Validator from './mixins/validator.js'
 
 export {
@@ -15,5 +16,6 @@ export {
   BsPaginator,
   BsTable,
   BsToast,
+  BsModal,
   Validator,
 }
