@@ -20,6 +20,11 @@
     />
   </div>
   <div
+    v-if="invalidMessage !== null"
+    class="invalid-feedback"
+    v-text="invalidMessage"
+  />
+  <div
     v-if="hint !== null"
     :id="getHintId()"
     class="form-text"
