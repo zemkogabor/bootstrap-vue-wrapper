@@ -38,6 +38,7 @@
             <slot
               v-if="field.key in item"
               name="td"
+              :key="key"
               :field="field.key"
               :item="item[field.key]"
             >
