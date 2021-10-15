@@ -1,5 +1,5 @@
 <template>
-  <div class="form-check">
+  <div class="form-check" :class="classContainer">
     <input
       :id="id"
       ref="validationTarget"
@@ -18,18 +18,18 @@
       class="form-check-label"
       v-text="label"
     />
+    <div
+      v-if="invalidMessage !== null"
+      class="invalid-feedback"
+      v-text="invalidMessage"
+    />
+    <div
+      v-if="hint !== null"
+      :id="getHintId()"
+      class="form-text"
+      v-text="hint"
+    />
   </div>
-  <div
-    v-if="invalidMessage !== null"
-    class="invalid-feedback"
-    v-text="invalidMessage"
-  />
-  <div
-    v-if="hint !== null"
-    :id="getHintId()"
-    class="form-text"
-    v-text="hint"
-  />
 </template>
 
 <script>
@@ -87,6 +87,13 @@ export default {
     falseValue: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * Input container div class.
+     */
+    classContainer: {
+      type: String,
+      default: null,
     },
   },
   emits: ['update:modelValue'],
