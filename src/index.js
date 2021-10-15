@@ -1,6 +1,7 @@
 import BsBreadcrumb from './components/bs-breadcrumb/BsBreadcrumb.vue'
 import BsForm from './components/bs-form/BsForm.vue'
 import BsInput from './components/bs-input/BsInput.vue'
+import BsCheckbox from './components/bs-checkbox/BsCheckbox.vue'
 import BsTextarea from './components/bs-textarea/BsTextarea.vue'
 import BsPaginator from './components/bs-paginator/BsPaginator.vue'
 import BsTable from './components/bs-table/BsTable.vue'
@@ -12,6 +13,7 @@ export {
   BsBreadcrumb,
   BsForm,
   BsInput,
+  BsCheckbox,
   BsTextarea,
   BsPaginator,
   BsTable,
