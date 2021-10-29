@@ -8,7 +8,7 @@
               'cursor-pointer': isSortableField(field),
               thClass,
             }"
-            @click="onHeadClick(field.key)"
+            @click="onHeadClick(field)"
           >
             <slot name="tr">
               {{ field.label }}
@@ -176,9 +176,9 @@ export default {
         return
       }
 
-      this.setSortDesc(field)
+      this.setSortDesc(field.key)
 
-      this.$emit('orderChanged', { sortDesc: this.sortDesc, orderBy: field })
+      this.$emit('orderChanged', { sortDesc: this.sortDesc, orderBy: field.key })
     },
   },
 }
