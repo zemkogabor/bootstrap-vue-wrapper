@@ -7,6 +7,7 @@ import BsPaginator from './components/bs-paginator/BsPaginator.vue'
 import BsTable from './components/bs-table/BsTable.vue'
 import BsToast from './components/bs-toast/BsToast.vue'
 import BsModal from './components/bs-modal/BsModal.vue'
+import BsSelect from './components/bs-select/BsSelect.vue'
 import Validator from './mixins/validator.js'
 
 export {
@@ -19,5 +20,6 @@ export {
   BsTable,
   BsToast,
   BsModal,
+  BsSelect,
   Validator,
 }

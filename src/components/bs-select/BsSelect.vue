@@ -5,15 +5,31 @@
     class="form-label"
     v-text="label"
   />
-  <input
+  <select
     ref="validationTarget"
+    class="form-select"
     :value="modelValue"
-    class="form-control"
+    :aria-labelledby="hint !== null ? getHintId() : null"
     v-bind="$attrs"
-    :aria-describedby="hint !== null ? getHintId() : null"
     @input="onInput"
     @invalid="onInvalid"
   >
+    <option
+      v-if="placeholder !== null"
+      value=""
+      disabled
+      hidden
+    >
+      {{ placeholder }}
+    </option>
+    <option
+      v-for="(option, index) in options"
+      :key="index"
+      :value="option.value"
+    >
+      {{ option.text }}
+    </option>
+  </select>
   <div
     v-if="invalidMessage !== null"
     class="invalid-feedback"
@@ -59,6 +75,20 @@ export default {
      * Attribute hint
      */
     hint: {
+      type: String,
+      default: null,
+    },
+    /**
+     * Options
+     */
+    options: {
+      type: Array,
+      default: () => [],
+    },
+    /**
+     * Placeholder
+     */
+    placeholder: {
       type: String,
       default: null,
     },
