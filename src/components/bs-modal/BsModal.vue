@@ -49,6 +49,12 @@ export default {
   },
   methods: {
     /**
+     * Trigger modal hide event.
+     */
+    hide() {
+      Modal.getOrCreateInstance(this.$refs.modalRef).hide()
+    },
+    /**
      * Hidden event.
      */
     onHidden() {
