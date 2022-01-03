@@ -5,7 +5,7 @@
     tabindex="-1"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog" :class="classDialog">
       <div class="modal-content">
         <div class="modal-header">
           <div class="h5 modal-title" v-text="title" />
@@ -38,6 +38,10 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    classDialog: {
+      type: Object,
+      default: () => {},
     },
   },
   emits: ['hidden'],
