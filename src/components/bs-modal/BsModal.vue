@@ -40,8 +40,8 @@ export default {
       required: true,
     },
     classDialog: {
-      type: Object,
-      default: () => {},
+      type: [String, Object],
+      default: null,
     },
   },
   emits: ['hidden'],
