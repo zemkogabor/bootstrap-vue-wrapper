@@ -28,6 +28,13 @@
           </slot>
         </td>
       </tr>
+      <tr v-else-if="items.length === 0">
+        <td :colspan="fields.length">
+          <slot name="empty">
+            <div class="text-center" v-t="'table.empty_text'" />
+          </slot>
+        </td>
+      </tr>
       <tr v-for="(item, key) in items" v-else :key="key">
         <template v-for="field in fields" :key="field.key">
           <td
@@ -36,11 +43,10 @@
             }"
           >
             <slot
-              v-if="field.key in item"
               name="td"
               :key="key"
               :field="field.key"
-              :item="item[field.key]"
+              :item="field.key in item ? item[field.key] : null"
             >
               {{ item[field.key] }}
             </slot>
