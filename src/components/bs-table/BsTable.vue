@@ -31,7 +31,7 @@
       <tr v-else-if="items.length === 0">
         <td :colspan="fields.length">
           <slot name="empty">
-            <div class="text-center" v-t="'table.empty_text'" />
+            <div v-t="'table.empty_text'" class="text-center" />
           </slot>
         </td>
       </tr>
@@ -43,8 +43,8 @@
             }"
           >
             <slot
-              name="td"
               :key="key"
+              name="td"
               :field="field.key"
               :item="field.key in item ? item[field.key] : null"
             >

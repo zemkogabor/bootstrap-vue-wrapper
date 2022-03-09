@@ -7,12 +7,14 @@
     "plugin:vue/vue3-recommended"
   ],
   "rules": {
+    "vue/multi-word-component-names": "off",
     "vue/max-attributes-per-line": [
       "error", {
-        "singleline": 3,
+        "singleline": {
+          "max": 3
+        },
         "multiline": {
-          "max": 1,
-          "allowFirstLine": true
+          "max": 1
         }
       }
     ],
