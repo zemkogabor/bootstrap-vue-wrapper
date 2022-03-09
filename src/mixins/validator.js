@@ -8,6 +8,15 @@ export default {
       invalidMessage: null,
     }
   },
+  props: {
+    /**
+     * If this is true the validation message does not appear.
+     */
+    hideValidationMessage: {
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
     /**
      * On invalid event.
@@ -15,6 +24,10 @@ export default {
      * @param event
      */
     onInvalid(event) {
+      if (this.hideValidationMessage) {
+        return
+      }
+
       this.invalidMessage = this.getInvalidMessage(event.target)
     },
     /**
@@ -33,7 +46,9 @@ export default {
         validationTarget.setCustomValidity('')
       }
 
-      this.invalidMessage = this.getInvalidMessage(validationTarget)
+      if (!this.hideValidationMessage) {
+        this.invalidMessage = this.getInvalidMessage(validationTarget)
+      }
     },
     /**
      * Return invalid message.
