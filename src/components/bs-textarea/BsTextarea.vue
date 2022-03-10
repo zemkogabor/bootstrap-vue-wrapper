@@ -15,7 +15,7 @@
     @invalid="onInvalid"
   />
   <div
-    v-if="invalidMessage !== null"
+    v-if="invalidMessage !== null && !hideValidationMessage"
     class="invalid-feedback"
     v-text="invalidMessage"
   />
@@ -61,6 +61,13 @@ export default {
     hint: {
       type: String,
       default: null,
+    },
+    /**
+     * If this is true the validation message does not appear.
+     */
+    hideValidationMessage: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ['update:modelValue'],
