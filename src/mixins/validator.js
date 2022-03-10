@@ -36,6 +36,7 @@ export default {
       }
 
       this.invalidMessage = this.getInvalidMessage(validationTarget)
+      this.$emit('invalid', this.invalidMessage)
     },
     /**
      * Return invalid message.
