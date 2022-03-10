@@ -8,6 +8,7 @@ export default {
       invalidMessage: null,
     }
   },
+  emits: ['invalid'],
   methods: {
     /**
      * On invalid event.
@@ -16,6 +17,7 @@ export default {
      */
     onInvalid(event) {
       this.invalidMessage = this.getInvalidMessage(event.target)
+      this.$emit('invalid', this.invalidMessage)
     },
     /**
      * Set custom error
