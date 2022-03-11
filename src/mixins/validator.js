@@ -31,8 +31,10 @@ export default {
 
       if (data !== null) {
         validationTarget.setCustomValidity(data)
+        validationTarget.classList.add('is-invalid')
       } else {
         validationTarget.setCustomValidity('')
+        validationTarget.classList.remove('is-invalid')
       }
 
       this.invalidMessage = this.getInvalidMessage(validationTarget)
