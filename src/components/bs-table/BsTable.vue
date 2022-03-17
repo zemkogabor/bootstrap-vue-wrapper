@@ -96,7 +96,7 @@ export default {
      */
     orderBy: {
       type: String,
-      required: true,
+      default: null,
     },
     /**
      * th element css lass
