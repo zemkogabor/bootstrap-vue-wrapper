@@ -8,7 +8,7 @@
         :class="{ active: isActiveItem(item)}"
       >
         <router-link
-          v-if="!isActiveItem(item)"
+          v-if="item.route && !isActiveItem(item)"
           :to="item.route"
           v-text="item.title"
         />
@@ -38,10 +38,6 @@ export default {
      * @returns {boolean}
      */
     isActiveItem(item) {
-      if (item.route === undefined || item.route === null) {
-        return false
-      }
-
       return item.route.name === this.$route.name
     },
   },
