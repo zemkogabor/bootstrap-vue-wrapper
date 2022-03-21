@@ -38,6 +38,10 @@ export default {
      * @returns {boolean}
      */
     isActiveItem(item) {
+      if (item.route === undefined || item.route === null) {
+        return false
+      }
+
       return item.route.name === this.$route.name
     },
   },
