@@ -5,10 +5,10 @@
         v-for="(item, index) in items"
         :key="index"
         class="breadcrumb-item"
-        :class="{ active: isActiveItem(item)}"
+        :class="{ active: !isRouteAvailable(item)}"
       >
         <router-link
-          v-if="item.route && !isActiveItem(item)"
+          v-if="isRouteAvailable(item)"
           :to="item.route"
           v-text="item.title"
         />
@@ -32,17 +32,17 @@ export default {
   },
   methods: {
     /**
-     * Is active item
+     * Is route available
      *
      * @param item
      * @returns {boolean}
      */
-    isActiveItem(item) {
+    isRouteAvailable(item) {
       if (!item.route) {
         return false
       }
 
-      return item.route.name === this.$route.name
+      return item.route.name !== this.$route.name
     },
   },
 }
