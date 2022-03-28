@@ -44,11 +44,12 @@ export default {
       default: null,
     },
   },
-  emits: ['hidden'],
+  emits: ['shown', 'hidden'],
   mounted() {
     const modalElement = this.$refs.modalRef
     Modal.getOrCreateInstance(modalElement).show()
 
+    modalElement.addEventListener('shown.bs.modal', this.onShown)
     modalElement.addEventListener('hidden.bs.modal', this.onHidden)
   },
   methods: {
@@ -57,6 +58,12 @@ export default {
      */
     hide() {
       Modal.getOrCreateInstance(this.$refs.modalRef).hide()
+    },
+    /**
+     * Hidden event.
+     */
+    onShown() {
+      this.$emit('shown')
     },
     /**
      * Hidden event.
