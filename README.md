@@ -1,4 +1,4 @@
-# bootstrap-Vue Wrapper
+# Bootstrap-Vue Wrapper
 
 [![NPM version](https://img.shields.io/npm/v/bootstrap-vue-wrapper.svg)](https://www.npmjs.com/package/bootstrap-vue-wrapper)
 
