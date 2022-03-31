@@ -12,9 +12,9 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "bootstrap": "^5.1",
-    "vue": "^3.2",
-    "vue-router": "^4.0"
+    "bootstrap": "^5.1.0",
+    "vue": "^3.2.0",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^8.8.0",
