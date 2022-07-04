@@ -9,6 +9,7 @@ import BsToast from './components/bs-toast/BsToast.vue'
 import BsModal from './components/bs-modal/BsModal.vue'
 import BsSelect from './components/bs-select/BsSelect.vue'
 import BsRadio from './components/bs-radio/BsRadio.vue'
+import BsOffcanvas from './components/bs-offcanvas/BsOffcanvas.vue'
 import Validator from './mixins/validator.js'
 
 export {
@@ -24,4 +25,5 @@ export {
   BsSelect,
   BsRadio,
   Validator,
+  BsOffcanvas,
 }
