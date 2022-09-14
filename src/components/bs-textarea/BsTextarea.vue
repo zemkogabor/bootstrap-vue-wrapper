@@ -6,6 +6,7 @@
     v-text="label"
   />
   <textarea
+    :id="id"
     ref="validationTarget"
     :value="modelValue"
     v-bind="$attrs"

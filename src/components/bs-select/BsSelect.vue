@@ -6,6 +6,7 @@
     v-text="label"
   />
   <select
+    :id="id"
     ref="validationTarget"
     class="form-select"
     :value="modelValue"
