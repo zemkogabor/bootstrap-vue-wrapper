@@ -31,7 +31,7 @@
       <tr v-else-if="items.length === 0">
         <td :colspan="fields.length">
           <slot name="empty">
-            <div v-t="'table.empty_text'" class="text-center" />
+            <div v-t="'table.empty_text'" class="text-center text-muted small" />
           </slot>
         </td>
       </tr>
