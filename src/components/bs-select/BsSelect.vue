@@ -7,7 +7,7 @@
   />
   <select
     :id="id"
-    ref="validationTarget"
+    ref="input"
     class="form-select"
     :value="modelValue"
     :aria-labelledby="hint !== null ? getHintId() : null"

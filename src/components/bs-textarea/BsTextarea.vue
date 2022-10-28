@@ -7,7 +7,7 @@
   />
   <textarea
     :id="id"
-    ref="validationTarget"
+    ref="input"
     :value="modelValue"
     v-bind="$attrs"
     class="form-control"

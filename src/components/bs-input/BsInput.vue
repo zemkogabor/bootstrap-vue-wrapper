@@ -7,7 +7,7 @@
   />
   <input
     :id="id"
-    ref="validationTarget"
+    ref="input"
     :value="modelValue"
     class="form-control"
     v-bind="$attrs"
