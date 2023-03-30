@@ -7,7 +7,7 @@
   >
     <div class="modal-dialog" :class="classDialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div v-if="!hideHeader" class="modal-header">
           <div class="h5 modal-title" v-text="title" />
           <button
             type="button"
@@ -15,10 +15,10 @@
             data-bs-dismiss="modal"
           />
         </div>
-        <div class="modal-body">
+        <div v-if="!hideBody" class="modal-body">
           <slot name="body" />
         </div>
-        <div class="modal-footer">
+        <div v-if="!hideFooter" class="modal-footer">
           <slot name="footer" />
         </div>
       </div>
@@ -42,6 +42,18 @@ export default {
     classDialog: {
       type: [String, Object],
       default: null,
+    },
+    hideHeader: {
+      type: Boolean,
+      default: false,
+    },
+    hideBody: {
+      type: Boolean,
+      default: false,
+    },
+    hideFooter: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ['shown', 'hidden'],

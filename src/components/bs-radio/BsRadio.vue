@@ -2,7 +2,7 @@
   <div class="form-check" :class="classContainer">
     <input
       :id="id"
-      ref="input"
+      ref="inputRef"
       :value="modelValue"
       v-bind="$attrs"
       type="radio"

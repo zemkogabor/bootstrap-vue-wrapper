@@ -27,7 +27,7 @@ export default {
      * @param data
      */
     setCustomError(data) {
-      const validationTarget = this.$refs.input
+      const validationTarget = this.$refs.inputRef
 
       if (data !== null) {
         validationTarget.setCustomValidity(data)

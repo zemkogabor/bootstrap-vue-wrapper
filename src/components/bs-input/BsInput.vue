@@ -7,7 +7,7 @@
   />
   <input
     :id="id"
-    ref="input"
+    ref="inputRef"
     :value="modelValue"
     class="form-control"
     v-bind="$attrs"
