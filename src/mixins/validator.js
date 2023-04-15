@@ -59,6 +59,14 @@ export default {
         return this.$t('validator.error.too_long', [input.maxLength])
       }
 
+      if (input.validity.rangeUnderflow) {
+        return this.$t('validator.error.range_underflow', [input.min])
+      }
+
+      if (input.validity.rangeOverflow) {
+        return this.$t('validator.error.range_overflow', [input.max])
+      }
+
       if (input.validity.typeMismatch) {
         if (input.type === 'email') {
           return this.$t('validator.error.type_mismatch.email')
