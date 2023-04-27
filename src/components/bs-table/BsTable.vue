@@ -37,7 +37,8 @@
       </tr>
       <tr
         v-for="(item, key) in items"
-        v-else :key="key"
+        v-else
+        :key="key"
         :class="item.trClass"
       >
         <template v-for="field in fields" :key="field.key">
