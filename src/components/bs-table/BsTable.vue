@@ -35,8 +35,8 @@
           </slot>
         </td>
       </tr>
-      <tr v-for="(item, key) in items" v-else :key="key">
-        <template v-for="field in fields" :key="field.key" :class="item.trClass">
+      <tr v-for="(item, key) in items" v-else :key="key" :class="item.trClass">
+        <template v-for="field in fields" :key="field.key">
           <td
             :class="tdClass"
           >
