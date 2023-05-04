@@ -55,7 +55,7 @@ export default {
      * Value for v-model
      */
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, Array],
       default: null,
     },
     /**
