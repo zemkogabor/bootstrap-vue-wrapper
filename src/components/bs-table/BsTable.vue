@@ -23,7 +23,7 @@
         <td :colspan="fields.length">
           <slot name="loading">
             <div class="d-flex justify-content-center p-2">
-              <div class="spinner-border spinner-border-sm text-dark" />
+              <div class="spinner-border spinner-border-sm" />
             </div>
           </slot>
         </td>
