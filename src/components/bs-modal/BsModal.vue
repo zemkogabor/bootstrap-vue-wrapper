@@ -8,12 +8,14 @@
     <div class="modal-dialog" :class="classDialog">
       <div class="modal-content">
         <div v-if="!hideHeader" class="modal-header">
-          <div class="h5 modal-title" v-text="title" />
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-          />
+          <slot name="header">
+            <div class="h5 modal-title" v-text="title" />
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            />
+          </slot>
         </div>
         <div v-if="!hideBody" class="modal-body">
           <slot name="body" />
