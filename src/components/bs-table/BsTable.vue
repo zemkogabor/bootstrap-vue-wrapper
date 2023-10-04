@@ -45,11 +45,14 @@
           <td
             :class="tdClass"
           >
+            <!-- "item" prop deprecated, its name is too general, "value" should be used instead -->
             <slot
               :key="key"
               name="td"
               :field="field.key"
+              :row="item"
               :item="field.key in item ? item[field.key] : null"
+              :value="field.key in item ? item[field.key] : null"
             >
               {{ item[field.key] }}
             </slot>
