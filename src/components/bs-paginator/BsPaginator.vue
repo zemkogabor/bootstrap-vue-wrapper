@@ -17,7 +17,7 @@
       >
         <div
           class="page-link"
-          @click="onPageClick(1)"
+          @click="onPageClick(currentPage - 1)"
           v-text="previousPageLabel"
         />
       </li>
