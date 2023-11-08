@@ -12,7 +12,7 @@
           >
             <slot name="tr">
               {{ field.label }}
-              <i v-if="isActiveOrderBy(field.key) && isSortDescDefined()" :class="getSortIconClass()" />
+              <i v-if="isActiveOrderBy(field.key) && this.sortDesc !== null" :class="getSortIconClass()" />
             </slot>
           </th>
         </template>
@@ -105,6 +105,13 @@ export default {
       default: null,
     },
     /**
+     * Sort is descending or ascending
+     */
+    sortDesc: {
+      type: Boolean,
+      default: null,
+    },
+    /**
      * th element css lass
      */
     thClass: {
@@ -120,14 +127,6 @@ export default {
     },
   },
   emits: ['orderChanged'],
-  data() {
-    return {
-      /**
-       * Sort is desc or not. Default not defined.
-       */
-      sortDesc: null,
-    }
-  },
   methods: {
     /**
      * Is order by active by field?
@@ -148,31 +147,32 @@ export default {
       return field.sort === undefined || field.sort
     },
     /**
-     * Is sort defined?
-     *
-     * @returns {boolean}
-     */
-    isSortDescDefined() {
-      return this.sortDesc !== null
-    },
-    /**
      * Sort icon class.
      *
      * @returns {string}
      */
     getSortIconClass() {
+      if (this.sortDesc === null) {
+        throw new Error('Sort desc value is null, cannot calculate the sort icon!')
+      }
+
       return this.sortDesc ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'
     },
     /**
-     * Set sort desc.
+     * Calcuate sort desc value on click
+     * Returns null if there is no sortDesc value.
      */
-    setSortDesc(field) {
-      if (this.isSortDescDefined() && !this.isOrderByChanged(field)) {
-        this.sortDesc = !this.sortDesc
-        return
+    calcSortDesc(field) {
+      if (this.sortDesc === null) {
+        return null
       }
 
-      this.sortDesc = false // default (first click) sort is ASC
+      if (!this.isOrderByChanged(field)) {
+        // if the given order is already active, the sort will be the opposite
+        return !this.sortDesc
+      }
+
+      return false // default (first click) sort is ASC
     },
     /**
      * Is order by changed?
@@ -188,9 +188,7 @@ export default {
         return
       }
 
-      this.setSortDesc(field.key)
-
-      this.$emit('orderChanged', { sortDesc: this.sortDesc, orderBy: field.key })
+      this.$emit('orderChanged', { sortDesc: this.calcSortDesc(field.key), orderBy: field.key })
     },
   },
 }
