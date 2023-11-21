@@ -2,7 +2,7 @@
   <nav>
     <ul class="pagination">
       <li
-        class="page-item"
+        class="page-item page-item-first"
         :class="{ disabled: isPageActive(1) }"
       >
         <div
@@ -12,7 +12,7 @@
         />
       </li>
       <li
-        class="page-item"
+        class="page-item page-item-previous"
         :class="{ disabled: isPageActive(1) }"
       >
         <div
@@ -24,7 +24,7 @@
       <li
         v-for="(page, index) in getVisiblePages()"
         :key="index"
-        class="page-item"
+        class="page-item page-item-number"
         :class="{
           active: isPageActive(page),
         }"
@@ -36,7 +36,7 @@
         />
       </li>
       <li
-        class="page-item"
+        class="page-item page-item-next"
         :class="{ disabled: isPageActive(getPageCount()) }"
       >
         <div
@@ -46,7 +46,7 @@
         />
       </li>
       <li
-        class="page-item"
+        class="page-item page-item-last"
         :class="{ disabled: isPageActive(getPageCount()) }"
       >
         <div
@@ -187,7 +187,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
 .page-link {
   cursor: pointer;
+}
+.page-item-first,
+.page-item-last,
+.page-item-number:not(.active) {
+  display: none;
+}
+
+@include media-breakpoint-up(sm) {
+  .page-item-number:not(.active) {
+    display: block;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .page-item-first,
+  .page-item-last {
+    display: block;
+  }
 }
 </style>
