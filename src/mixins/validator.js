@@ -73,7 +73,7 @@ export default {
         }
 
         if (input.type === 'url') {
-          return this.$t('validator.error.type_mismatch.email')
+          return this.$t('validator.error.type_mismatch.url')
         }
       }
 
