@@ -38,11 +38,7 @@ export default {
      * @returns {boolean}
      */
     isRouteAvailable(item) {
-      if (!item.route) {
-        return false
-      }
-
-      return item.route.name !== this.$route.name
+      return item.route
     },
   },
 }
