@@ -14,3 +14,19 @@
 ```bash
 npm install bootstrap-vue-wrapper
 ```
+
+or
+
+```bash
+yarn add bootstrap-vue-wrapper
+```
+
+## Dev:
+``` bash
+yarn install
+yarn dev
+```
+
+## Examples
+
+There are examples of each component in [this file](https://github.com/zemkogabor/bootstrap-vue-wrapper/blob/main/dev/pages/Home.vue).
