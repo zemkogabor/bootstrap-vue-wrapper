@@ -21,10 +21,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Offcanvas } from 'bootstrap'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'BsOffcanvas',
   props: {
     /**
@@ -37,31 +38,31 @@ export default {
   },
   emits: ['shown', 'hidden'],
   mounted() {
-    const offcanvasElemet = this.$refs.offcanvasRef
-    Offcanvas.getOrCreateInstance(offcanvasElemet).show()
+    const offcanvasElement = this.$refs.offcanvasRef
+    Offcanvas.getOrCreateInstance(offcanvasElement).show()
 
-    offcanvasElemet.addEventListener('shown.bs.offcanvas', this.onShown)
-    offcanvasElemet.addEventListener('hidden.bs.offcanvas', this.onHidden)
+    offcanvasElement.addEventListener('shown.bs.offcanvas', this.onShown)
+    offcanvasElement.addEventListener('hidden.bs.offcanvas', this.onHidden)
   },
   methods: {
     /**
      * Trigger offcanvas hide event.
      */
-    hide() {
+    hide(): void {
       Offcanvas.getOrCreateInstance(this.$refs.offcanvasRef).hide()
     },
     /**
-     * Hidden event.
+     * Shown event.
      */
-    onShown() {
+    onShown(): void {
       this.$emit('shown')
     },
     /**
      * Hidden event.
      */
-    onHidden() {
+    onHidden(): void {
       this.$emit('hidden')
     },
   },
-}
+})
 </script>

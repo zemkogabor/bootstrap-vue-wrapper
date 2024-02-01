@@ -59,8 +59,10 @@
   </nav>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'BsPaginator',
   props: {
     /**
@@ -127,7 +129,7 @@ export default {
      *
      * @returns {number}
      */
-    getPageCount() {
+    getPageCount(): number {
       return Math.ceil(this.totalCount / this.pageSize)
     },
     /**
@@ -135,7 +137,7 @@ export default {
      *
      * @returns {*[]}
      */
-    getVisiblePages() {
+    getVisiblePages(): number[] {
       const visiblePages = []
       const pageRange = this.getPageRange()
       for (let i = pageRange.beginPage; i <= pageRange.endPage; i += 1) {
@@ -150,13 +152,13 @@ export default {
      * @param page
      * @returns {boolean}
      */
-    isPageActive(page) {
+    isPageActive(page): boolean {
       return page === this.currentPage
     },
     /**
      * On page click
      */
-    onPageClick(page) {
+    onPageClick(page): void {
       if (this.isPageActive(page)) {
         return
       }
@@ -168,7 +170,7 @@ export default {
      *
      * @returns {{beginPage: number, endPage: number}}
      */
-    getPageRange() {
+    getPageRange(): { beginPage: number, endPage: number } {
       let beginPage = Math.max(0, this.currentPage - (this.maxVisiblePage / 2))
       let endPage = beginPage + this.maxVisiblePage - 1
 
@@ -183,13 +185,13 @@ export default {
       }
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
 
 .page-link {
   cursor: pointer;

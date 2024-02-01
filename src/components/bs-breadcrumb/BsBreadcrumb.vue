@@ -10,23 +10,33 @@
         <router-link
           v-if="isRouteAvailable(item)"
           :to="item.route"
-          v-text="item.title"
-        />
+        >
+          {{ item.title }}
+        </router-link>
         <span v-else v-text="item.title" />
       </li>
     </ol>
   </nav>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+
+interface BreadcrumbItem {
+  route?: {
+    name: string
+  },
+  title: string;
+}
+
+export default defineComponent({
   name: 'BsBreadcrumb',
   props: {
     /**
      * List of breadcrumb items.
      */
     items: {
-      type: Array,
+      type: Array as PropType<BreadcrumbItem[]>,
       required: true,
     },
   },
@@ -38,8 +48,8 @@ export default {
      * @returns {boolean}
      */
     isRouteAvailable(item) {
-      return item.route
+      return item.route !== undefined
     },
   },
-}
+})
 </script>

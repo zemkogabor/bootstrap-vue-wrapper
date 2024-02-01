@@ -13,7 +13,7 @@
           >
             <slot name="tr">
               {{ field.label }}
-              <i v-if="isActiveOrderBy(field.key) && this.sortDesc !== null" :class="getSortIconClass()" />
+              <i v-if="isActiveOrderBy(field.key) && sortDesc !== undefined" :class="getSortIconClass()" />
             </slot>
           </th>
         </template>
@@ -46,13 +46,11 @@
           <td
             :class="tdClass"
           >
-            <!-- "item" prop deprecated, its name is too general, "value" should be used instead -->
             <slot
               :key="key"
               name="td"
               :field="field.key"
               :row="item"
-              :item="field.key in item ? item[field.key] : null"
               :value="field.key in item ? item[field.key] : null"
             >
               {{ item[field.key] }}
@@ -64,24 +62,23 @@
   </table>
 </template>
 
-<script>
-/**
- * @typedef {{
- *   key: String,
- *   label: String,
- *   ?sort: Boolean,
- *   }[],
- * }} Field
- */
-export default {
-  name: 'TableList',
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+
+interface Field {
+  key: string;
+  label: string;
+  sort?: boolean;
+}
+
+export default defineComponent({
+  name: 'BsTable',
   props: {
     /**
      * Field list
      */
     fields: {
-      /** @type {{ new(): Field[] }} */
-      type: Array,
+      type: Array as PropType<Field[]>,
       required: true,
     },
     /**
@@ -103,28 +100,28 @@ export default {
      */
     orderBy: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Sort is descending or ascending
      */
     sortDesc: {
       type: Boolean,
-      default: null,
+      default: undefined,
     },
     /**
      * th element css lass
      */
     thClass: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * td element css class
      */
     tdClass: {
       type: String,
-      default: null,
+      default: undefined,
     },
   },
   emits: ['orderChanged'],
@@ -135,7 +132,7 @@ export default {
      * @param field
      * @returns {boolean}
      */
-    isActiveOrderBy(field) {
+    isActiveOrderBy(field): boolean {
       return field === this.orderBy
     },
     /**
@@ -144,7 +141,7 @@ export default {
      * @param field
      * @returns {boolean}
      */
-    isSortableField(field) {
+    isSortableField(field): boolean {
       return field.sort === undefined || field.sort
     },
     /**
@@ -152,8 +149,8 @@ export default {
      *
      * @returns {string}
      */
-    getSortIconClass() {
-      if (this.sortDesc === null) {
+    getSortIconClass(): string {
+      if (this.sortDesc === undefined) {
         throw new Error('Sort desc value is null, cannot calculate the sort icon!')
       }
 
@@ -163,8 +160,8 @@ export default {
      * Calcuate sort desc value on click
      * Returns null if there is no sortDesc value.
      */
-    calcSortDesc(field) {
-      if (this.sortDesc === null) {
+    calcSortDesc(field): boolean | null {
+      if (this.sortDesc === undefined) {
         return null
       }
 
@@ -178,13 +175,13 @@ export default {
     /**
      * Is order by changed?
      */
-    isOrderByChanged(field) {
+    isOrderByChanged(field): boolean {
       return this.orderBy !== field
     },
     /**
      * Table head clicked.
      */
-    onHeadClick(field) {
+    onHeadClick(field): void {
       if (!this.isSortableField(field)) {
         return
       }
@@ -192,7 +189,7 @@ export default {
       this.$emit('orderChanged', { sortDesc: this.calcSortDesc(field.key), orderBy: field.key })
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

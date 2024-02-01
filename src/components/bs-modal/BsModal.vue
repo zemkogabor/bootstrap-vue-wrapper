@@ -28,10 +28,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Modal } from 'bootstrap'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'BsModal',
   props: {
     /**
@@ -70,21 +71,21 @@ export default {
     /**
      * Trigger modal hide event.
      */
-    hide() {
+    hide(): void {
       Modal.getOrCreateInstance(this.$refs.modalRef).hide()
     },
     /**
-     * Hidden event.
+     * Shown event.
      */
-    onShown() {
+    onShown(): void {
       this.$emit('shown')
     },
     /**
      * Hidden event.
      */
-    onHidden() {
+    onHidden(): void {
       this.$emit('hidden')
     },
   },
-}
+})
 </script>
