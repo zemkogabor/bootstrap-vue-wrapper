@@ -1,5 +1,5 @@
 {
-  "name": "boostrap-vue-wrapper",
+  "name": "bootstrap-vue-wrapper",
   "version": "2.0.0",
   "description": "Bootstrap 5 components in Vue3 wrapper.",
   "main": "./dist/bootstrap-vue-wrapper.umd.js",
