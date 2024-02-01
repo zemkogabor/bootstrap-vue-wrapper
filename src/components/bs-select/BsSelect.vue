@@ -1,6 +1,6 @@
 <template>
   <label
-    v-if="label !== null"
+    v-if="label !== undefined"
     :for="id"
     class="form-label"
     v-text="label"
@@ -10,13 +10,13 @@
     ref="inputRef"
     class="form-select"
     :value="modelValue"
-    :aria-labelledby="hint !== null ? getHintId() : null"
+    :aria-labelledby="hint !== undefined ? getHintId() : null"
     v-bind="$attrs"
     @input="onInput"
     @invalid="onInvalid"
   >
     <option
-      v-if="placeholder !== null"
+      v-if="placeholder !== undefined"
       value=""
       disabled
       hidden
@@ -32,24 +32,29 @@
     </option>
   </select>
   <div
-    v-if="invalidMessage !== null && !hideValidationMessage"
+    v-if="validatorEnabled && validator.getInvalidMessage() !== null"
     class="invalid-feedback"
-    v-text="invalidMessage"
+    v-text="validator.getInvalidMessage()"
   />
   <div
-    v-if="hint !== null"
+    v-if="hint !== undefined"
     :id="getHintId()"
     class="form-text"
     v-text="hint"
   />
 </template>
 
-<script>
-import validator from '../../mixins/validator.js'
+<script lang="ts">
+import { useValidator } from '@/components/validator/Validator.ts'
+import { defineComponent, PropType, ref, Ref } from 'vue'
 
-export default {
-  name: 'BsInput',
-  mixins: [validator],
+interface Option {
+  value: number | string;
+  text: string;
+}
+
+export default defineComponent({
+  name: 'BsSelect',
   props: {
     /**
      * Value for v-model
@@ -70,43 +75,51 @@ export default {
      */
     label: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Attribute hint
      */
     hint: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Options
      */
     options: {
-      type: Array,
-      default: () => [],
+      type: Array as PropType<Option[]>,
+      required: true,
     },
     /**
      * Placeholder
      */
     placeholder: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
-     * If this is true the validation message does not appear.
+     * Enable or disable validator
      */
-    hideValidationMessage: {
+    validatorEnabled: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   emits: ['update:modelValue'],
+  setup() {
+    const inputRef: Ref<HTMLInputElement | null> = ref(null)
+
+    return {
+      inputRef,
+      validator: useValidator(inputRef),
+    }
+  },
   methods: {
     /**
      * Hint id is generated
      */
-    getHintId() {
+    getHintId(): string {
       return this.id + 'Hint'
     },
     /**
@@ -114,9 +127,22 @@ export default {
      *
      * @param event
      */
-    onInput(event) {
-      this.$emit('update:modelValue', event.target.value)
+    onInput(event : InputEvent): void {
+      const target = event.target as HTMLInputElement
+      this.$emit('update:modelValue', target.value)
+    },
+    /**
+     * On invalid event
+     *
+     * @param event
+     */
+    onInvalid(event : InputEvent): void {
+      if (!this.validatorEnabled) {
+        return
+      }
+
+      this.validator.onInvalid(event)
     },
   },
-}
+})
 </script>

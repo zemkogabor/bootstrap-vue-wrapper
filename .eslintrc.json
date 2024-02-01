@@ -4,7 +4,8 @@
     "plugin:vue/base",
     "plugin:vue/vue3-essential",
     "plugin:vue/vue3-strongly-recommended",
-    "plugin:vue/vue3-recommended"
+    "plugin:vue/vue3-recommended",
+    "@vue/eslint-config-typescript"
   ],
   "rules": {
     "vue/multi-word-component-names": "off",
@@ -34,6 +35,7 @@
         "exports": "always-multiline",
         "functions": "always-multiline"
       }
-    ]
+    ],
+    "object-shorthand": "off"
   }
 }

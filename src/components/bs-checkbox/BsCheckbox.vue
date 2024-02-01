@@ -8,23 +8,23 @@
       type="checkbox"
       class="form-check-input"
       :checked="isChecked"
-      :aria-describedby="hint !== null ? getHintId() : null"
+      :aria-describedby="hint !== undefined ? getHintId() : null"
       @input="onInput"
       @invalid="onInvalid"
     >
     <label
-      v-if="label !== null"
+      v-if="label !== undefined"
       :for="id"
       class="form-check-label"
       v-text="label"
     />
     <div
-      v-if="invalidMessage !== null && !hideValidationMessage"
+      v-if="validatorEnabled && validator.getInvalidMessage() !== null"
       class="invalid-feedback"
-      v-text="invalidMessage"
+      v-text="validator.getInvalidMessage()"
     />
     <div
-      v-if="hint !== null"
+      v-if="hint !== undefined"
       :id="getHintId()"
       class="form-text"
       v-text="hint"
@@ -32,12 +32,12 @@
   </div>
 </template>
 
-<script>
-import validator from '../../mixins/validator.js'
+<script lang="ts">
+import { useValidator } from '@/components/validator/Validator.ts'
+import { defineComponent, ref, Ref } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'BsCheckbox',
-  mixins: [validator],
   props: {
     /**
      * Value for checkbox if v-model is array.
@@ -65,62 +65,56 @@ export default {
      */
     label: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Attribute hint
      */
     hint: {
       type: String,
-      default: null,
-    },
-    /**
-     * True value
-     */
-    trueValue: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * False value
-     */
-    falseValue: {
-      type: Boolean,
-      default: false,
+      default: undefined,
     },
     /**
      * Input container div class.
      */
     classContainer: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
-     * If this is true the validation message does not appear.
+     * Enable or disable validator
      */
-    hideValidationMessage: {
+    validatorEnabled: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   emits: ['update:modelValue'],
+  setup() {
+    const inputRef: Ref<HTMLInputElement | null> = ref(null)
+
+    return {
+      inputRef,
+      validator: useValidator(inputRef),
+    }
+  },
   computed: {
     /**
      * Checkbox is checked or not.
      */
-    isChecked() {
+    isChecked(): boolean {
       if (this.modelValue instanceof Array) {
         return this.modelValue.includes(this.value)
       }
 
-      return this.modelValue === this.trueValue
+      return this.modelValue === true
     },
   },
   methods: {
     /**
      * Hint id is generated
      */
-    getHintId() {
+    getHintId(): String {
       return this.id + 'Hint'
     },
     /**
@@ -128,8 +122,9 @@ export default {
      *
      * @param event
      */
-    onInput(event) {
-      const isChecked = event.target.checked
+    onInput(event : InputEvent): void {
+      const target = event.target as HTMLInputElement
+      const isChecked = target.checked
 
       if (this.modelValue instanceof Array) {
         const newValue = [...this.modelValue]
@@ -140,9 +135,21 @@ export default {
         }
         this.$emit('update:modelValue', newValue)
       } else {
-        this.$emit('update:modelValue', isChecked ? this.trueValue : this.falseValue)
+        this.$emit('update:modelValue', isChecked)
       }
     },
+    /**
+     * On invalid event
+     *
+     * @param event
+     */
+    onInvalid(event : InputEvent): void {
+      if (!this.validatorEnabled) {
+        return
+      }
+
+      this.validator.onInvalid(event)
+    },
   },
-}
+})
 </script>

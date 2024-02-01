@@ -8,23 +8,23 @@
       type="radio"
       class="form-check-input"
       :checked="isChecked"
-      :aria-describedby="hint !== null ? getHintId() : null"
+      :aria-describedby="hint !== undefined ? getHintId() : null"
       @input="onInput"
       @invalid="onInvalid"
     >
     <label
-      v-if="label !== null"
+      v-if="label !== undefined"
       :for="id"
       class="form-check-label"
       v-text="label"
     />
     <div
-      v-if="invalidMessage !== null && !hideValidationMessage"
+      v-if="validatorEnabled && validator.getInvalidMessage() !== null"
       class="invalid-feedback"
-      v-text="invalidMessage"
+      v-text="validator.getInvalidMessage()"
     />
     <div
-      v-if="hint !== null"
+      v-if="hint !== undefined"
       :id="getHintId()"
       class="form-text"
       v-text="hint"
@@ -32,12 +32,12 @@
   </div>
 </template>
 
-<script>
-import validator from '../../mixins/validator.js'
+<script lang="ts">
+import { useValidator } from '@/components/validator/Validator.ts'
+import { ref, Ref, defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'BsRadio',
-  mixins: [validator],
   props: {
     /**
      * Radio value
@@ -65,36 +65,44 @@ export default {
      */
     label: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Attribute hint
      */
     hint: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
      * Input container div class.
      */
     classContainer: {
       type: String,
-      default: null,
+      default: undefined,
     },
     /**
-     * If this is true the validation message does not appear.
+     * Enable or disable validator
      */
-    hideValidationMessage: {
+    validatorEnabled: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   emits: ['update:modelValue'],
+  setup() {
+    const inputRef: Ref<HTMLInputElement | null> = ref(null)
+
+    return {
+      inputRef,
+      validator: useValidator(inputRef),
+    }
+  },
   computed: {
     /**
      * Radio is checked or not.
      */
-    isChecked() {
+    isChecked(): boolean {
       return this.modelValue === this.value
     },
   },
@@ -102,17 +110,27 @@ export default {
     /**
      * Hint id is generated
      */
-    getHintId() {
+    getHintId(): string {
       return this.id + 'Hint'
     },
     /**
      * On input event
+     */
+    onInput(): void {
+      this.$emit('update:modelValue', this.value)
+    },
+    /**
+     * On invalid event
      *
      * @param event
      */
-    onInput(event) {
-      this.$emit('update:modelValue', this.value)
+    onInvalid(event : InputEvent): void {
+      if (!this.validatorEnabled) {
+        return
+      }
+
+      this.validator.onInvalid(event)
     },
   },
-}
+})
 </script>

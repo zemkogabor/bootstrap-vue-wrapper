@@ -11,8 +11,10 @@
   </form>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'BsForm',
   emits: ['submit'],
   data() {
@@ -26,12 +28,12 @@ export default {
      *
      * @param event
      */
-    onSubmit(event) {
+    onSubmit(event : SubmitEvent) {
       event.preventDefault()
       this.submitClicked = true
 
       this.$emit('submit', event)
     },
   },
-}
+})
 </script>

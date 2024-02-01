@@ -10,14 +10,40 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Toast } from 'bootstrap'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'BsToast',
+  emits: ['shown', 'hidden'],
+
   mounted() {
     const toastElement = this.$refs.toastRef
     Toast.getOrCreateInstance(toastElement).show()
+
+    toastElement.addEventListener('shown.bs.toast', this.onShown)
+    toastElement.addEventListener('hidden.bs.toast', this.onHidden)
   },
-}
+  methods: {
+    /**
+     * Trigger toast hide event.
+     */
+    hide(): void {
+      Toast.getOrCreateInstance(this.$refs.toastRef).hide()
+    },
+    /**
+     * Hidden event.
+     */
+    onShown(): void {
+      this.$emit('shown')
+    },
+    /**
+     * Hidden event.
+     */
+    onHidden(): void {
+      this.$emit('hidden')
+    },
+  },
+})
 </script>
