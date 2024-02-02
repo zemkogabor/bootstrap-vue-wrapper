@@ -14,7 +14,15 @@ export default defineConfig({
       fileName: 'bootstrap-vue-wrapper',
     },
     rollupOptions: {
-      external: ['vue', 'bootstrap'],
+      external: [
+        'vue',
+        'vue-i18n',
+        'vue-router',
+        'bootstrap',
+        'bootstrap-icons',
+        'sass',
+        '@popperjs/core',
+      ],
       output: {
         globals: {
           vue: 'Vue',
