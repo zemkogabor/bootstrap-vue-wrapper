@@ -14,7 +14,7 @@ export default defineConfig({
       fileName: 'bootstrap-vue-wrapper',
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'bootstrap'],
       output: {
         globals: {
           vue: 'Vue',
