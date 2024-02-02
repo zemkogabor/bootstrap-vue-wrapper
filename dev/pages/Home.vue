@@ -214,8 +214,8 @@ import {
   BsToast,
   BsTable,
   BsPaginator,
+  useValidator,
 } from '@/index'
-import { useValidator } from '@/components/validator/Validator.ts'
 import { ref, defineComponent } from 'vue'
 export default defineComponent({
   name: 'Home',

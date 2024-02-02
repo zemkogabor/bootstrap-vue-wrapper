@@ -10,6 +10,7 @@ import BsModal from '@/components/bs-modal/BsModal.vue'
 import BsSelect from '@/components/bs-select/BsSelect.vue'
 import BsRadio from '@/components/bs-radio/BsRadio.vue'
 import BsOffcanvas from '@/components/bs-offcanvas/BsOffcanvas.vue'
+import { useValidator } from '@/components/validator/Validator.ts'
 
 export {
   BsBreadcrumb,
@@ -24,4 +25,5 @@ export {
   BsSelect,
   BsRadio,
   BsOffcanvas,
+  useValidator,
 }
