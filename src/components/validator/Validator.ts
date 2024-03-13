@@ -97,7 +97,7 @@ export function useValidator(inputRef : Ref<HTMLInputElement | null>) {
    *
    * @param event
    */
-  function onInvalid(event : InputEvent) {
+  function onInvalid(event : Event) {
     if (event.target === null) {
       return
     }

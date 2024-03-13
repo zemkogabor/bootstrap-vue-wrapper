@@ -47,7 +47,7 @@ export default defineComponent({
      * @param item
      * @returns {boolean}
      */
-    isRouteAvailable(item) {
+    isRouteAvailable(item: BreadcrumbItem): boolean {
       return item.route !== undefined
     },
   },

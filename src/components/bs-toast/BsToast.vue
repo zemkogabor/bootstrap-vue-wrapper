@@ -19,7 +19,7 @@ export default defineComponent({
   emits: ['shown', 'hidden'],
 
   mounted() {
-    const toastElement = this.$refs.toastRef
+    const toastElement = this.$refs.toastRef as HTMLElement
     Toast.getOrCreateInstance(toastElement).show()
 
     toastElement.addEventListener('shown.bs.toast', this.onShown)
@@ -30,7 +30,8 @@ export default defineComponent({
      * Trigger toast hide event.
      */
     hide(): void {
-      Toast.getOrCreateInstance(this.$refs.toastRef).hide()
+      const toastElement = this.$refs.toastRef as HTMLElement
+      Toast.getOrCreateInstance(toastElement).hide()
     },
     /**
      * Hidden event.

@@ -22,6 +22,7 @@
         v-model="username"
         label="Username"
         hint="Input with custom validation ('admin' username invalid)"
+        :minlength="3"
       />
     </div>
     <div class="mb-3">

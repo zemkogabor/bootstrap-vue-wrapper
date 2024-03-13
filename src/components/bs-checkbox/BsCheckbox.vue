@@ -8,7 +8,7 @@
       type="checkbox"
       class="form-check-input"
       :checked="isChecked"
-      :aria-describedby="hint !== undefined ? getHintId() : null"
+      :aria-describedby="hint !== undefined ? getHintId() : undefined"
       @input="onInput"
       @invalid="onInvalid"
     >
@@ -114,7 +114,7 @@ export default defineComponent({
     /**
      * Hint id is generated
      */
-    getHintId(): String {
+    getHintId(): string {
       return this.id + 'Hint'
     },
     /**
@@ -122,7 +122,7 @@ export default defineComponent({
      *
      * @param event
      */
-    onInput(event : InputEvent): void {
+    onInput(event : Event): void {
       const target = event.target as HTMLInputElement
       const isChecked = target.checked
 
@@ -143,7 +143,7 @@ export default defineComponent({
      *
      * @param event
      */
-    onInvalid(event : InputEvent): void {
+    onInvalid(event : Event): void {
       if (!this.validatorEnabled) {
         return
       }

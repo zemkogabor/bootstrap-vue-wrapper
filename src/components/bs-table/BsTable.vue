@@ -85,11 +85,11 @@ export default defineComponent({
      * Item list
      */
     items: {
-      type: Array,
+      type: Array as PropType<any[]>,
       required: true,
     },
     /**
-     * Items is loading
+     * Items loading
      */
     isLoading: {
       type: Boolean,
@@ -129,11 +129,11 @@ export default defineComponent({
     /**
      * Is order by active by field?
      *
-     * @param field
+     * @param fieldKey
      * @returns {boolean}
      */
-    isActiveOrderBy(field): boolean {
-      return field === this.orderBy
+    isActiveOrderBy(fieldKey : string): boolean {
+      return fieldKey === this.orderBy
     },
     /**
      * Is field sortable?
@@ -141,7 +141,7 @@ export default defineComponent({
      * @param field
      * @returns {boolean}
      */
-    isSortableField(field): boolean {
+    isSortableField(field : Field): boolean {
       return field.sort === undefined || field.sort
     },
     /**
@@ -160,12 +160,12 @@ export default defineComponent({
      * Calcuate sort desc value on click
      * Returns null if there is no sortDesc value.
      */
-    calcSortDesc(field): boolean | null {
+    calcSortDesc(fieldKey : string): boolean | null {
       if (this.sortDesc === undefined) {
         return null
       }
 
-      if (!this.isOrderByChanged(field)) {
+      if (!this.isOrderByChanged(fieldKey)) {
         // if the given order is already active, the sort will be the opposite
         return !this.sortDesc
       }
@@ -175,13 +175,13 @@ export default defineComponent({
     /**
      * Is order by changed?
      */
-    isOrderByChanged(field): boolean {
-      return this.orderBy !== field
+    isOrderByChanged(fieldKey : string): boolean {
+      return this.orderBy !== fieldKey
     },
     /**
      * Table head clicked.
      */
-    onHeadClick(field): void {
+    onHeadClick(field : Field): void {
       if (!this.isSortableField(field)) {
         return
       }

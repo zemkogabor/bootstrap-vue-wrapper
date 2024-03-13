@@ -8,7 +8,7 @@
       type="radio"
       class="form-check-input"
       :checked="isChecked"
-      :aria-describedby="hint !== undefined ? getHintId() : null"
+      :aria-describedby="hint !== undefined ? getHintId() : undefined"
       @input="onInput"
       @invalid="onInvalid"
     >
@@ -124,7 +124,7 @@ export default defineComponent({
      *
      * @param event
      */
-    onInvalid(event : InputEvent): void {
+    onInvalid(event : Event): void {
       if (!this.validatorEnabled) {
         return
       }

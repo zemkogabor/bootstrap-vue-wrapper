@@ -38,7 +38,7 @@ export default defineComponent({
   },
   emits: ['shown', 'hidden'],
   mounted() {
-    const offcanvasElement = this.$refs.offcanvasRef
+    const offcanvasElement = this.$refs.offcanvasRef as HTMLElement
     Offcanvas.getOrCreateInstance(offcanvasElement).show()
 
     offcanvasElement.addEventListener('shown.bs.offcanvas', this.onShown)
@@ -49,7 +49,8 @@ export default defineComponent({
      * Trigger offcanvas hide event.
      */
     hide(): void {
-      Offcanvas.getOrCreateInstance(this.$refs.offcanvasRef).hide()
+      const offcanvasElement = this.$refs.offcanvasRef as HTMLElement
+      Offcanvas.getOrCreateInstance(offcanvasElement).hide()
     },
     /**
      * Shown event.

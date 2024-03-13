@@ -61,7 +61,7 @@ export default defineComponent({
   },
   emits: ['shown', 'hidden'],
   mounted() {
-    const modalElement = this.$refs.modalRef
+    const modalElement = this.$refs.modalRef as HTMLElement
     Modal.getOrCreateInstance(modalElement).show()
 
     modalElement.addEventListener('shown.bs.modal', this.onShown)
@@ -72,7 +72,9 @@ export default defineComponent({
      * Trigger modal hide event.
      */
     hide(): void {
-      Modal.getOrCreateInstance(this.$refs.modalRef).hide()
+      const modalElement = this.$refs.modalRef as HTMLElement
+
+      Modal.getOrCreateInstance(modalElement).hide()
     },
     /**
      * Shown event.

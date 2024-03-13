@@ -10,7 +10,7 @@
     ref="inputRef"
     class="form-select"
     :value="modelValue"
-    :aria-labelledby="hint !== undefined ? getHintId() : null"
+    :aria-labelledby="hint !== undefined ? getHintId() : undefined"
     v-bind="$attrs"
     @input="onInput"
     @invalid="onInvalid"
@@ -127,7 +127,7 @@ export default defineComponent({
      *
      * @param event
      */
-    onInput(event : InputEvent): void {
+    onInput(event : Event): void {
       const target = event.target as HTMLInputElement
       this.$emit('update:modelValue', target.value)
     },
@@ -136,7 +136,7 @@ export default defineComponent({
      *
      * @param event
      */
-    onInvalid(event : InputEvent): void {
+    onInvalid(event : Event): void {
       if (!this.validatorEnabled) {
         return
       }
