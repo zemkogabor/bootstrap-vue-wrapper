@@ -22,8 +22,10 @@
 </template>
 
 <script lang="ts">
-import { Offcanvas } from 'bootstrap'
+import * as bootstrap from 'bootstrap'
 import { defineComponent } from 'vue'
+
+const Offcanvas = bootstrap.Offcanvas
 
 export default defineComponent({
   name: 'BsOffcanvas',
