@@ -1,14 +1,15 @@
 {
   "name": "bootstrap-vue-wrapper",
-  "version": "2.0.5",
+  "version": "2.1.0",
   "description": "Bootstrap 5 components in Vue3 wrapper.",
-  "main": "./dist/bootstrap-vue-wrapper.umd.js",
-  "module": "./dist/bootstrap-vue-wrapper.mjs",
+  "main": "./dist/bootstrap-vue-wrapper.umd.cjs",
+  "module": "./dist/bootstrap-vue-wrapper.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/bootstrap-vue-wrapper.mjs",
-      "require": "./dist/bootstrap-vue-wrapper.umd.js",
+      "import": "./dist/bootstrap-vue-wrapper.js",
+      "require": "./dist/bootstrap-vue-wrapper.umd.cjs",
       "types": "./dist/index.d.ts"
     }
   },
