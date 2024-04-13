@@ -1,29 +1,13 @@
-import BsBreadcrumb from './components/bs-breadcrumb/BsBreadcrumb.vue'
-import BsForm from '@/components/bs-form/BsForm.vue'
-import BsInput from '@/components/bs-input/BsInput.vue'
-import BsCheckbox from '@/components/bs-checkbox/BsCheckbox.vue'
-import BsTextarea from '@/components/bs-textarea/BsTextarea.vue'
-import BsPaginator from '@/components/bs-paginator/BsPaginator.vue'
-import BsTable from '@/components/bs-table/BsTable.vue'
-import BsToast from '@/components/bs-toast/BsToast.vue'
-import BsModal from '@/components/bs-modal/BsModal.vue'
-import BsSelect from '@/components/bs-select/BsSelect.vue'
-import BsRadio from '@/components/bs-radio/BsRadio.vue'
-import BsOffcanvas from '@/components/bs-offcanvas/BsOffcanvas.vue'
-import { useValidator } from '@/components/validator/Validator.ts'
-
-export {
-  BsBreadcrumb,
-  BsForm,
-  BsInput,
-  BsCheckbox,
-  BsTextarea,
-  BsPaginator,
-  BsTable,
-  BsToast,
-  BsModal,
-  BsSelect,
-  BsRadio,
-  BsOffcanvas,
-  useValidator,
-}
+export { default as BsBreadcrumb } from './components/bs-breadcrumb/BsBreadcrumb.vue'
+export { default as BsForm } from '@/components/bs-form/BsForm.vue'
+export { default as BsInput } from '@/components/bs-input/BsInput.vue'
+export { default as BsCheckbox } from '@/components/bs-checkbox/BsCheckbox.vue'
+export { default as BsTextarea } from '@/components/bs-textarea/BsTextarea.vue'
+export { default as BsPaginator } from '@/components/bs-paginator/BsPaginator.vue'
+export { default as BsTable } from '@/components/bs-table/BsTable.vue'
+export { default as BsToast } from '@/components/bs-toast/BsToast.vue'
+export { default as BsModal } from '@/components/bs-modal/BsModal.vue'
+export { default as BsSelect } from '@/components/bs-select/BsSelect.vue'
+export { default as BsRadio } from '@/components/bs-radio/BsRadio.vue'
+export { default as BsOffcanvas } from '@/components/bs-offcanvas/BsOffcanvas.vue'
+export { useValidator } from '@/components/validator/Validator.ts'
