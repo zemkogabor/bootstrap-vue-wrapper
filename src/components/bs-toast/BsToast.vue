@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import Toast from 'bootstrap/js/dist/toast'
+import { Toast } from 'bootstrap'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

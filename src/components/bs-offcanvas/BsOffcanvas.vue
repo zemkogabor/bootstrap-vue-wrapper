@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import Offcanvas from 'bootstrap/js/dist/offcanvas'
+import { Offcanvas } from 'bootstrap'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

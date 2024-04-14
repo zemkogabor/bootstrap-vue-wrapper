@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import Modal from 'bootstrap/js/dist/modal'
+import { Modal } from 'bootstrap'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
