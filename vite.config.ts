@@ -11,6 +11,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
+      name: 'BootstrapVueWrapper',
+      fileName: 'bootstrap-vue-wrapper',
     },
     rollupOptions: {
       external: [
