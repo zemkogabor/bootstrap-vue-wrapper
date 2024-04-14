@@ -12,6 +12,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'BootstrapVueWrapper',
       fileName: 'bootstrap-vue-wrapper',
+      formats: ['es'],
     },
     rollupOptions: {
       external: [
@@ -24,6 +25,7 @@ export default defineConfig({
         '@popperjs/core',
       ],
       output: {
+        preserveModules: true,
         globals: {
           vue: 'Vue',
         },
