@@ -27,7 +27,7 @@ export default defineConfig({
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',
-        entryFileNames: ({name: fileName}) => {
+        entryFileNames: ({ name: fileName }) => {
           return `${fileName}.js`
         },
         globals: {
