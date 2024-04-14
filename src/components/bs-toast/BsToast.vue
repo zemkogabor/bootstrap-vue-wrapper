@@ -11,10 +11,8 @@
 </template>
 
 <script lang="ts">
-import * as bootstrap from 'bootstrap'
+import Toast from 'bootstrap/js/dist/toast'
 import { defineComponent } from 'vue'
-
-const Toast = bootstrap.Toast
 
 export default defineComponent({
   name: 'BsToast',

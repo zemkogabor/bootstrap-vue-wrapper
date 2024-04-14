@@ -18,16 +18,14 @@ export default defineConfig({
         'vue-i18n',
         'vue-router',
         'bootstrap',
+        'bootstrap/js/dist/modal',
+        'bootstrap/js/dist/toast',
+        'bootstrap/js/dist/offcanvas',
         'bootstrap-icons',
         'sass',
         '@popperjs/core',
       ],
       output: {
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-        entryFileNames: ({ name: fileName }) => {
-          return `${fileName}.js`
-        },
         globals: {
           vue: 'Vue',
         },

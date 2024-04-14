@@ -29,10 +29,8 @@
 </template>
 
 <script lang="ts">
-import * as bootstrap from 'bootstrap'
+import Modal from 'bootstrap/js/dist/modal'
 import { defineComponent } from 'vue'
-
-const Modal = bootstrap.Modal
 
 export default defineComponent({
   name: 'BsModal',
