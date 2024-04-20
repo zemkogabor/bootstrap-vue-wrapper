@@ -1,6 +1,9 @@
 import { ref, Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+/**
+ * @deprecated Use @zemkogabor/vue-form-validator instead of this file.
+ */
 export function useValidator(inputRef : Ref<HTMLInputElement | null>) {
   const { t } = useI18n()
   const invalidMessage: Ref<string | null> = ref(null)
