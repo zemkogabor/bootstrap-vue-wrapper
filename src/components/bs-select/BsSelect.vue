@@ -60,7 +60,7 @@ export default defineComponent({
      * Value for v-model
      */
     modelValue: {
-      type: [String, Number, Array],
+      type: [String, Number, Array] as PropType<number | string | string[] | number[] | null>,
       default: null,
     },
     /**

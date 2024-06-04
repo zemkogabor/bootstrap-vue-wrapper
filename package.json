@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-vue-wrapper",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Bootstrap 5 components in Vue3 wrapper.",
   "module": "./dist/bootstrap-vue-wrapper.js",
   "types": "./dist/index.d.ts",
