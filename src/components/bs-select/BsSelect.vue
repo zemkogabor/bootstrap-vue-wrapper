@@ -27,6 +27,7 @@
       v-for="(option, index) in options"
       :key="index"
       :value="option.value"
+      :disabled="option.disabled !== undefined && option.disabled"
     >
       {{ option.text }}
     </option>
@@ -51,6 +52,7 @@ import { defineComponent, PropType, ref, Ref } from 'vue'
 interface Option {
   value: number | string;
   text: string;
+  disabled: boolean | undefined;
 }
 
 export default defineComponent({

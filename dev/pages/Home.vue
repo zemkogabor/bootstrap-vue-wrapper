@@ -279,6 +279,7 @@ export default defineComponent({
         {
           value: 2,
           text: 'Kosice',
+          disabled: true,
         },
         {
           value: 3,
