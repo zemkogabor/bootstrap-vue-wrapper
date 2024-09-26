@@ -64,12 +64,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
-interface Field {
-  key: string;
-  label: string;
-  sort?: boolean;
-}
+import Field from '@/types/Field.ts'
 
 export default defineComponent({
   name: 'BsTable',

@@ -48,12 +48,7 @@
 <script lang="ts">
 import { useValidator } from '@/components/validator/Validator.ts'
 import { defineComponent, PropType, ref, Ref } from 'vue'
-
-interface Option {
-  value: number | string;
-  text: string;
-  disabled: boolean | undefined;
-}
+import Option from '@/types/Option.ts'
 
 export default defineComponent({
   name: 'BsSelect',

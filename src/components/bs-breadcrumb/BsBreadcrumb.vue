@@ -21,13 +21,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
-interface BreadcrumbItem {
-  route?: {
-    name: string
-  },
-  title: string;
-}
+import BreadcrumbItem from '@/types/BreadcrumbItem.ts'
 
 export default defineComponent({
   name: 'BsBreadcrumb',
