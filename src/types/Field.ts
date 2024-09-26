@@ -3,4 +3,3 @@ export default interface Field {
   label: string;
   sort?: boolean;
 }
-
