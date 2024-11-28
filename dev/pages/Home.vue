@@ -60,6 +60,7 @@
         class-container="form-switch"
         label="Checkbox"
         required
+        @update:model-value="onCheckboxChange"
       />
       = {{ inputCheckbox }}
     </div>
@@ -347,6 +348,9 @@ export default defineComponent({
     },
     showToast(): void {
       this.toastShown = true
+    },
+    onCheckboxChange(): void {
+      console.log('Checkbox change, value: ' + this.inputCheckbox)
     },
   },
 })
