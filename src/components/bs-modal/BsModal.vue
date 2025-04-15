@@ -3,7 +3,6 @@
     ref="modalRef"
     class="modal fade"
     tabindex="-1"
-    aria-hidden="true"
   >
     <div class="modal-dialog" :class="classDialog">
       <div class="modal-content">
