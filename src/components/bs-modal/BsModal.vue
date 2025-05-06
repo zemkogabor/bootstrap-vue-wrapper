@@ -58,13 +58,17 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ['shown', 'hidden'],
+  emits: ['show', 'shown', 'hide', 'hidden', 'hidePrevented'],
   mounted() {
     const modalElement = this.$refs.modalRef as HTMLElement
     Modal.getOrCreateInstance(modalElement).show()
 
-    modalElement.addEventListener('shown.bs.modal', this.onShown)
-    modalElement.addEventListener('hidden.bs.modal', this.onHidden)
+    // https://getbootstrap.com/docs/5.3/components/modal/#events
+    modalElement.addEventListener('show.bs.modal', (e) => this.$emit('show', e))
+    modalElement.addEventListener('shown.bs.modal', (e) => this.$emit('shown', e))
+    modalElement.addEventListener('hide.bs.modal', (e) => this.$emit('hide', e))
+    modalElement.addEventListener('hidden.bs.modal', (e) => this.$emit('hidden', e))
+    modalElement.addEventListener('hidePrevented.bs.modal', (e) => this.$emit('hidePrevented', e))
   },
   methods: {
     /**
@@ -74,18 +78,6 @@ export default defineComponent({
       const modalElement = this.$refs.modalRef as HTMLElement
 
       Modal.getOrCreateInstance(modalElement).hide()
-    },
-    /**
-     * Shown event.
-     */
-    onShown(): void {
-      this.$emit('shown')
-    },
-    /**
-     * Hidden event.
-     */
-    onHidden(): void {
-      this.$emit('hidden')
     },
   },
 })

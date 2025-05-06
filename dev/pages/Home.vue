@@ -129,6 +129,7 @@
   <bs-modal
     v-if="modalShown"
     title="Modal"
+    @hide="onModalHide"
     @hidden="modalShown = false"
   >
     <template #body>
@@ -351,6 +352,11 @@ export default defineComponent({
     },
     onCheckboxChange(): void {
       console.log('Checkbox change, value: ' + this.inputCheckbox)
+    },
+    onModalHide(event: Event): void {
+      // if you want to prevent the modal from closing, you can use event.preventDefault()
+      // event.preventDefault()
+      console.log(event)
     },
   },
 })
