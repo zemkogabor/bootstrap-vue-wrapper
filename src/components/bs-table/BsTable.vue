@@ -40,7 +40,8 @@
         v-for="(item, key) in items"
         v-else
         :key="key"
-        :class="item.trClass"
+        :class="[item.trClass || '', { 'cursor-pointer': rowClickable }]"
+        @click="$emit('rowClicked', item)"
       >
         <template v-for="field in fields" :key="field.key">
           <td
@@ -118,8 +119,15 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    /**
+     * row is clickable
+     */
+    rowClickable: {
+      type: Boolean,
+      default: false,
+    },
   },
-  emits: ['orderChanged'],
+  emits: ['orderChanged', 'rowClicked'],
   methods: {
     /**
      * Is order by active by field?

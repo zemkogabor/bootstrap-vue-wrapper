@@ -185,10 +185,12 @@
     order-by="id"
     :sort-desc="false"
     :is-loading="false"
+    row-clickable
+    @row-clicked="onRowClicked"
   >
     <template #td="data">
       <span v-if="data.field === 'action'">
-        <button type="button" class="btn btn-primary">Download</button>
+        <button type="button" class="btn btn-primary" @click.stop="onTableButtonClicked">Download</button>
       </span>
       <template v-else>
         {{ data.value }}
@@ -357,6 +359,12 @@ export default defineComponent({
       // if you want to prevent the modal from closing, you can use event.preventDefault()
       // event.preventDefault()
       console.log(event)
+    },
+    onRowClicked(row: { id: number; name: string }): void {
+      console.log('Row clicked', row)
+    },
+    onTableButtonClicked() {
+      console.log('Only button clicked (because of @click.stop)')
     },
   },
 })
