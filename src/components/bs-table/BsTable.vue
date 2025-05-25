@@ -41,6 +41,7 @@
         v-else
         :key="key"
         :class="[item.trClass || '', { 'cursor-pointer': rowClickable }]"
+        :data-id="item.id"
         @click="$emit('rowClicked', item)"
       >
         <template v-for="field in fields" :key="field.key">
