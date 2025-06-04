@@ -31,6 +31,11 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        entryFileNames: ({ name: fileName }) => {
+          return `${fileName}.js`
+        },
       },
     },
   },
