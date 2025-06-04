@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-vue-wrapper",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Bootstrap 5 components in Vue3 wrapper.",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./ssr-safe": {
+      "import": "./dist/ssr-safe.js",
+      "types": "./dist/ssr-safe.d.ts"
     }
   },
   "files": [

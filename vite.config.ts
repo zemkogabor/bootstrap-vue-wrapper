@@ -12,7 +12,10 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        'ssr-safe': resolve(__dirname, 'src/ssr-safe.ts'),
+      },
       formats: ['es'],
       name: 'BootstrapVueWrapper',
       fileName: 'bootstrap-vue-wrapper',
