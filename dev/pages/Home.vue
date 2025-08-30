@@ -196,6 +196,11 @@
         {{ data.value }}
       </template>
     </template>
+    <template #row-details="{ row }">
+      <div class="p-3 bg-light">
+        {{ row.rowDetails }}
+      </div>
+    </template>
   </bs-table>
   <bs-paginator
     class="mb-5"
@@ -322,7 +327,7 @@ export default defineComponent({
       tableItems: [
         { id: 1, name: 'John' },
         { id: 2, name: 'George' },
-        { id: 3, name: 'Paul' },
+        { id: 3, name: 'Paul', _showRowDetails: true, rowDetails: 'Paul Jackson' },
         { id: 4, name: 'Ringo' },
       ],
     }

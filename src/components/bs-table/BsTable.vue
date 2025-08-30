@@ -36,30 +36,38 @@
           </slot>
         </td>
       </tr>
-      <tr
+      <template
         v-for="(item, key) in items"
         v-else
         :key="key"
-        :class="[item.trClass || '', { 'cursor-pointer': rowClickable }]"
-        :data-id="item.id"
-        @click="$emit('rowClicked', item)"
       >
-        <template v-for="field in fields" :key="field.key">
-          <td
-            :class="tdClass"
-          >
-            <slot
-              :key="key"
-              name="td"
-              :field="field.key"
-              :row="item"
-              :value="field.key in item ? item[field.key] : null"
+        <tr
+          :class="[item.trClass || '', { 'cursor-pointer': rowClickable }]"
+          :data-id="item.id"
+          @click="$emit('rowClicked', item)"
+        >
+          <template v-for="field in fields" :key="field.key">
+            <td
+              :class="tdClass"
             >
-              {{ item[field.key] }}
-            </slot>
+              <slot
+                :key="key"
+                name="td"
+                :field="field.key"
+                :row="item"
+                :value="field.key in item ? item[field.key] : null"
+              >
+                {{ item[field.key] }}
+              </slot>
+            </td>
+          </template>
+        </tr>
+        <tr v-if="item._showRowDetails">
+          <td :colspan="fields.length">
+            <slot name="row-details" :row="item" />
           </td>
-        </template>
-      </tr>
+        </tr>
+      </template>
     </tbody>
   </table>
 </template>
