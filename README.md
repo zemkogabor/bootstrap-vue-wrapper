@@ -27,6 +27,13 @@ yarn install
 yarn dev
 ```
 
+## Release
+Create new token (check Bypass two-factor authentication)
+https://www.npmjs.com/settings/zemkogabor/tokens
+
+Set token in github secrets as NPM_TOKEN
+https://github.com/zemkogabor/bootstrap-vue-wrapper/settings/secrets/actions
+
 ## Examples
 
 There are examples of each component in [this file](https://github.com/zemkogabor/bootstrap-vue-wrapper/blob/main/dev/pages/Home.vue).
