@@ -314,6 +314,7 @@ export default defineComponent({
         {
           key: 'id',
           label: 'ID',
+          tdClass: 'bg-success',
         },
         {
           key: 'name',

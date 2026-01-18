@@ -48,7 +48,7 @@
         >
           <template v-for="field in fields" :key="field.key">
             <td
-              :class="tdClass"
+              :class="field.tdClass || tdClass"
             >
               <slot
                 :key="key"
