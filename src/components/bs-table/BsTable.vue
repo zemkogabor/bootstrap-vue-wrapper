@@ -75,7 +75,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import type Field from '@/types/Field.ts'
-import type { TableRow } from '@/types/TableRow.ts'
+import type { TableRowMeta } from '@/types/TableRow.ts'
 
 export default defineComponent({
   name: 'BsTable',
@@ -91,7 +91,7 @@ export default defineComponent({
      * Item list
      */
     items: {
-      type: Array as PropType<TableRow[]>,
+      type: Array as PropType<Array<Record<string, unknown> & TableRowMeta>>,
       required: true,
     },
     /**
