@@ -91,7 +91,8 @@ export default defineComponent({
      * Item list
      */
     items: {
-      type: Array as PropType<Array<Record<string, unknown> & TableRowMeta>>,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      type: Array as PropType<Array<Record<string, any> & TableRowMeta>>,
       required: true,
     },
     /**
