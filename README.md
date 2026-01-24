@@ -5,7 +5,6 @@
 ## Requirements:
 - Bootstrap 5
 - Bootstrap icons
-- Vue i18n (for custom validation messages)
 - Vue router (for `<router-link>`)
 - Vue 3
 

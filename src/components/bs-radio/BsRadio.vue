@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts">
-import { useValidator } from '@/components/validator/Validator.ts'
-import { ref, Ref, defineComponent } from 'vue'
+import { useValidator } from '@zemkogabor/vue-form-validator'
+import { ref, type Ref, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'BsRadio',

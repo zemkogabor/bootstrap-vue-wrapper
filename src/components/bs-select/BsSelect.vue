@@ -46,9 +46,9 @@
 </template>
 
 <script lang="ts">
-import { useValidator } from '@/components/validator/Validator.ts'
-import { defineComponent, PropType, ref, Ref } from 'vue'
-import Option from '@/types/Option.ts'
+import { useValidator } from '@zemkogabor/vue-form-validator'
+import { defineComponent, type PropType, ref, type Ref } from 'vue'
+import type Option from '@/types/Option.ts'
 
 export default defineComponent({
   name: 'BsSelect',
@@ -57,7 +57,7 @@ export default defineComponent({
      * Value for v-model
      */
     modelValue: {
-      type: [String, Number, Array] as PropType<number | string | string[] | number[] | null>,
+      type: [String, Number, Array, null] as PropType<number | string | string[] | number[] | null>,
       default: null,
     },
     /**

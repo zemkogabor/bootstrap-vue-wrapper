@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.0.0] - 2026-01-24
+**Major Changes**
+- Drop vue-i18n and vue-router dependencies: The library has removed its dependencies on vue-i18n and vue-router to streamline the codebase and reduce bundle size. Users are encouraged to implement their own internationalization and routing solutions as needed.
+- Replaced built in validator with @zemkogabor/vue-form-validator: The built-in validator has been replaced with the external @zemkogabor/vue-form-validator package, allowing for more flexible and powerful validation capabilities.
+- Added empty string to null conversion to BsInput and BsTextarea components: Now automatically convert empty strings to null values, improving data handling and consistency. You can disable with `emptyStringToNull` property.
+
+**New Features:**
+- Added trim property to BsInput and BsTextarea components: This new property allows automatic trimming of whitespace from user input, enhancing data quality and user experience.
+
 ## [2.0.0] - 2024-02-01
 **Major Changes**
 - Codebase Rewrite: The entire codebase has been rewritten in TypeScript, providing stronger type guarantees, improved maintainability, and enhanced developer experience.

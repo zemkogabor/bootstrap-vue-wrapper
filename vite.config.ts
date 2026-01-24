@@ -23,8 +23,6 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'vue',
-        'vue-i18n',
-        'vue-router',
         'bootstrap',
         'bootstrap-icons',
         'sass',

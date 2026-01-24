@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts">
-import { useValidator } from '@/components/validator/Validator.ts'
-import { defineComponent, ref, Ref } from 'vue'
+import { useValidator } from '@zemkogabor/vue-form-validator'
+import { defineComponent, ref, type Ref } from 'vue'
 
 export default defineComponent({
   name: 'BsCheckbox',

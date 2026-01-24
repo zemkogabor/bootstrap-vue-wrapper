@@ -34,7 +34,6 @@
           v-model="postalCode"
           type="text"
           :validator-enabled="false"
-          required
           @invalid="postalCodeValidator.onInvalid"
         />
         <button
@@ -224,8 +223,9 @@ import {
   BsToast,
   BsTable,
   BsPaginator,
-  useValidator,
 } from '@/index'
+
+import { useValidator } from '@zemkogabor/vue-form-validator'
 import { ref, defineComponent } from 'vue'
 export default defineComponent({
   name: 'Home',
@@ -254,9 +254,9 @@ export default defineComponent({
   },
   data() {
     return {
-      email: '',
-      username: '',
-      postalCode: '',
+      email: null,
+      username: null,
+      postalCode: null,
       inputCheckbox: true,
       inputCheckboxArray: [],
       inputCheckboxOptions: [
@@ -335,10 +335,11 @@ export default defineComponent({
   },
   methods: {
     onSubmit(event : SubmitEvent): void {
+      const userInputRef = this.$refs.usernameInputRef as InstanceType<typeof BsInput>
       if (this.username === 'admin') {
-        this.$refs.usernameInputRef.validator.setCustomError('Username is already taken')
+        userInputRef.validator.setCustomError('Username is already taken')
       } else {
-        this.$refs.usernameInputRef.validator.setCustomError(null)
+        userInputRef.validator.setCustomError(null)
       }
 
       const target = event.target as HTMLFormElement
@@ -347,7 +348,16 @@ export default defineComponent({
         return
       }
 
-      console.log('submit success')
+      console.log('submit success', {
+        email: this.email,
+        username: this.username,
+        postalCode: this.postalCode,
+        inputCheckbox: this.inputCheckbox,
+        inputCheckboxArray: this.inputCheckboxArray,
+        note: this.note,
+        customerSelected: this.customerSelected,
+        citySelected: this.citySelected,
+      })
     },
     showModal(): void {
       this.modalShown = true

@@ -29,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { useValidator } from '@/components/validator/Validator.ts'
-import { defineComponent, ref, Ref } from 'vue'
+import { useValidator } from '@zemkogabor/vue-form-validator'
+import { defineComponent, ref, type Ref } from 'vue'
 
 export default defineComponent({
   name: 'BsInput',
@@ -39,7 +39,7 @@ export default defineComponent({
      * Value for v-model
      */
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, null],
       default: null,
     },
     /**
@@ -70,6 +70,20 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * Convert empty string to null
+     */
+    emptyStringToNull: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * Trim input value
+     */
+    trim: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['update:modelValue'],
   setup() {
@@ -94,7 +108,18 @@ export default defineComponent({
      */
     onInput(event : Event): void {
       const target = event.target as HTMLInputElement
-      this.$emit('update:modelValue', target.value)
+
+      let value = target.value as string | null
+
+      if (this.trim) {
+        value = target.value.trim()
+      }
+
+      if (this.emptyStringToNull && value === '') {
+        value = null
+      }
+
+      this.$emit('update:modelValue', value)
     },
     /**
      * On invalid event

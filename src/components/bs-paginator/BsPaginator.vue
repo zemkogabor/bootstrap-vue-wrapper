@@ -152,13 +152,13 @@ export default defineComponent({
      * @param page
      * @returns {boolean}
      */
-    isPageActive(page): boolean {
+    isPageActive(page: number): boolean {
       return page === this.currentPage
     },
     /**
      * On page click
      */
-    onPageClick(page): void {
+    onPageClick(page: number): void {
       if (this.isPageActive(page)) {
         return
       }

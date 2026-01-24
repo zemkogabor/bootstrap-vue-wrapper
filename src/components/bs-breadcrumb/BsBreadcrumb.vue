@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import BreadcrumbItem from '@/types/BreadcrumbItem.ts'
+import { defineComponent, type PropType } from 'vue'
+import type BreadcrumbItem from '@/types/BreadcrumbItem.ts'
 
 export default defineComponent({
   name: 'BsBreadcrumb',
