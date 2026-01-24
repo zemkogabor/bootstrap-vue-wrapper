@@ -344,7 +344,7 @@ export default defineComponent({
       if (this.username === 'admin') {
         userInputRef.validator.setCustomError('Username is already taken')
       } else {
-        userInputRef.validator.setCustomError(null)
+        userInputRef.validator.setCustomError('')
       }
 
       const target = event.target as HTMLFormElement

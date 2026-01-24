@@ -50,7 +50,7 @@ export default defineComponent({
      * Value for v-model
      */
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, null],
       default: null,
     },
     /**

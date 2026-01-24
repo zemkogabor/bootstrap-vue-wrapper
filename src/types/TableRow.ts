@@ -1,5 +1,6 @@
-export type TableRow<T extends object = Record<string, unknown>> = T & {
+export default interface TableRow {
   trClass?: string;
   id?: string | number;
   _showRowDetails?: boolean;
+  [key: string]: object | string | number | boolean | undefined;
 }
