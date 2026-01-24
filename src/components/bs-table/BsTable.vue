@@ -75,7 +75,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import type Field from '@/types/Field.ts'
-import type TableRow from '@/types/TableRow.ts'
+import type { TableRow } from '@/types/TableRow.ts'
 
 export default defineComponent({
   name: 'BsTable',

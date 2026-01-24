@@ -1,6 +1,9 @@
-export default interface TableRow {
+export interface TableRowMeta {
   trClass?: string;
   id?: string | number;
   _showRowDetails?: boolean;
-  [key: string]: object | string | number | boolean | undefined | null;
+}
+
+export type TableRow = TableRowMeta & {
+  [key: string]: unknown;
 }
