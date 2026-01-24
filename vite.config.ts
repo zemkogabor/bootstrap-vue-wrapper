@@ -27,6 +27,7 @@ export default defineConfig({
         'bootstrap-icons',
         'sass',
         '@popperjs/core',
+        '@zemkogabor/vue-form-validator',
       ],
       output: {
         globals: {
