@@ -32,7 +32,7 @@
       <tr v-else-if="items.length === 0">
         <td :colspan="fields.length">
           <slot name="empty">
-            <div class="text-center text-muted small" v-text="emptyText" />
+            <div v-if="emptyText !== undefined" class="text-center text-muted small" v-text="emptyText" />
           </slot>
         </td>
       </tr>
@@ -75,6 +75,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import type Field from '@/types/Field.ts'
+import type { TableRow } from '@/types/TableRow.ts'
 
 export default defineComponent({
   name: 'BsTable',
@@ -90,12 +91,7 @@ export default defineComponent({
      * Item list
      */
     items: {
-      type: Array as PropType<{
-        [key: string]: unknown,
-        trClass?: string,
-        id?: string | number,
-        _showRowDetails?: boolean,
-      }[]>,
+      type: Array as PropType<TableRow[]>,
       required: true,
     },
     /**
@@ -142,7 +138,7 @@ export default defineComponent({
     },
     emptyText: {
       type: String,
-      default: 'No data available',
+      default: undefined,
     },
   },
   emits: ['orderChanged', 'rowClicked'],

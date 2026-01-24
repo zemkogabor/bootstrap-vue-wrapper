@@ -330,7 +330,12 @@ export default defineComponent({
         { id: 2, name: 'George' },
         { id: 3, name: 'Paul', _showRowDetails: true, rowDetails: 'Paul Jackson' },
         { id: 4, name: 'Ringo' },
-      ],
+      ] as {
+        id: number;
+        name: string;
+        _showRowDetails?: boolean;
+        rowDetails?: string;
+      }[],
     }
   },
   methods: {
