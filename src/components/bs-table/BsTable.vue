@@ -141,6 +141,14 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    sortAscIconClass: {
+      type: String,
+      default: 'bi bi-caret-down-fill',
+    },
+    sortDescIconClass: {
+      type: String,
+      default: 'bi bi-caret-up-fill',
+    },
   },
   emits: ['orderChanged', 'rowClicked'],
   methods: {
@@ -172,7 +180,7 @@ export default defineComponent({
         throw new Error('Sort desc value is null, cannot calculate the sort icon!')
       }
 
-      return this.sortDesc ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'
+      return this.sortDesc ? this.sortDescIconClass : this.sortAscIconClass
     },
     /**
      * Calcuate sort desc value on click
