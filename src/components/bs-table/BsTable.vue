@@ -6,7 +6,7 @@
           <th
             :class="{
               'cursor-pointer': isSortableField(field),
-              'text-decoration-underline': isActiveOrderBy(field.key),
+              'active-order-by': isActiveOrderBy(field.key),
               thClass,
             }"
             @click="onHeadClick(field)"
