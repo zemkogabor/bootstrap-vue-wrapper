@@ -184,6 +184,7 @@
     order-by="id"
     :sort-desc="false"
     :is-loading="false"
+    skeleton-loading
     row-clickable
     @row-clicked="onRowClicked"
   >

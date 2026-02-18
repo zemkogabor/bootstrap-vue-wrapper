@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="isLoading">
+      <tr v-if="isLoading && !skeletonLoading">
         <td :colspan="fields.length">
           <slot name="loading">
             <div class="d-flex justify-content-center p-2">
@@ -48,6 +48,7 @@
         >
           <template v-for="field in fields" :key="field.key">
             <td
+              v-if="!isLoading"
               :class="field.tdClass || tdClass"
             >
               <slot
@@ -60,9 +61,12 @@
                 {{ item[field.key] }}
               </slot>
             </td>
+            <td v-else-if="skeletonLoading">
+              <div class="bs-skeleton-line" />
+            </td>
           </template>
         </tr>
-        <tr v-if="item._showRowDetails">
+        <tr v-if="item._showRowDetails && !isLoading">
           <td :colspan="fields.length">
             <slot name="row-details" :row="item" />
           </td>
@@ -149,6 +153,13 @@ export default defineComponent({
       type: String,
       default: 'bi bi-caret-up-fill',
     },
+    /**
+     * Use skeleton loading instead of spinner when isLoading is true
+     */
+    skeletonLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['orderChanged', 'rowClicked'],
   methods: {
@@ -221,5 +232,53 @@ export default defineComponent({
 <style lang="scss" scoped>
 .cursor-pointer {
   cursor: pointer;
+}
+
+.bs-skeleton-line {
+  display: block;
+  width: 100%;
+  height: 0.85em;
+  border-radius: 999px;
+  margin: 0.25rem 0;
+
+  --sk-base: color-mix(in srgb, var(--bs-body-color) 10%, transparent);
+  --sk-shine: color-mix(in srgb, var(--bs-body-color) 18%, transparent);
+
+  background-image: linear-gradient(
+      90deg,
+      var(--sk-base) 0%,
+      var(--sk-shine) 20%,
+      var(--sk-base) 40%,
+      var(--sk-base) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+
+  animation: bs-skeleton-shimmer 1.15s ease-in-out infinite;
+}
+
+/* If color-mix is not supported, fallback to a simple gradient with hardcoded colors */
+@supports not (color: color-mix(in srgb, black, white)) {
+  .bs-skeleton-line {
+    background-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.14) 20%,
+        rgba(0, 0, 0, 0.08) 40%,
+        rgba(0, 0, 0, 0.08) 100%
+    );
+  }
+}
+
+@keyframes bs-skeleton-shimmer {
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-skeleton-line {
+    animation: none;
+  }
 }
 </style>
