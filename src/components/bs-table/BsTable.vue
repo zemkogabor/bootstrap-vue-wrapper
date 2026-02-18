@@ -20,15 +20,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="isLoading && !skeletonLoading">
-        <td :colspan="fields.length">
-          <slot name="loading">
-            <div class="d-flex justify-content-center p-2">
-              <div class="spinner-border spinner-border-sm" />
-            </div>
-          </slot>
-        </td>
-      </tr>
+      <template v-if="isLoading">
+        <tr v-if="!skeletonLoading">
+          <td :colspan="fields.length">
+            <slot name="loading">
+              <div class="d-flex justify-content-center p-2">
+                <div class="spinner-border spinner-border-sm" />
+              </div>
+            </slot>
+          </td>
+        </tr>
+        <template v-else>
+          <tr v-for="n in skeletonLoadingRowCount" :key="n">
+            <td v-for="field in fields" :key="field.key">
+              <div class="bs-skeleton-line" />
+            </td>
+          </tr>
+        </template>
+      </template>
       <tr v-else-if="items.length === 0">
         <td :colspan="fields.length">
           <slot name="empty">
@@ -61,9 +70,7 @@
                 {{ item[field.key] }}
               </slot>
             </td>
-            <td v-else-if="skeletonLoading">
-              <div class="bs-skeleton-line" />
-            </td>
+
           </template>
         </tr>
         <tr v-if="item._showRowDetails && !isLoading">
@@ -159,6 +166,10 @@ export default defineComponent({
     skeletonLoading: {
       type: Boolean,
       default: false,
+    },
+    skeletonLoadingRowCount: {
+      type: Number,
+      default: 20,
     },
   },
   emits: ['orderChanged', 'rowClicked'],

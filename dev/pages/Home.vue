@@ -185,6 +185,7 @@
     :sort-desc="false"
     :is-loading="false"
     skeleton-loading
+    :skeleton-loading-row-count="5"
     row-clickable
     @row-clicked="onRowClicked"
   >
