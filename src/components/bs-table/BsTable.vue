@@ -46,9 +46,9 @@
         </td>
       </tr>
       <template
-        v-for="(item, key) in items"
+        v-for="(item, index) in items"
         v-else
-        :key="key"
+        :key="index"
       >
         <tr
           :class="[item.trClass || '', { 'cursor-pointer': rowClickable }]"
@@ -61,7 +61,7 @@
               :class="field.tdClass || tdClass"
             >
               <slot
-                :key="key"
+                :index="index"
                 name="td"
                 :field="field.key"
                 :row="item"

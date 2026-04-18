@@ -194,7 +194,7 @@
         <button type="button" class="btn btn-primary" @click.stop="onTableButtonClicked">Download</button>
       </span>
       <template v-else>
-        {{ data.value }}
+        {{ data.value }} - {{ data.index }}
       </template>
     </template>
     <template #row-details="{ row }">
