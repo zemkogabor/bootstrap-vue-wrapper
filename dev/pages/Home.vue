@@ -13,6 +13,9 @@
         label="Email"
         required
         hint="Input with native (required) validation"
+        :custom-validator-messages="{
+          valueMissing: 'Please enter your super email address',
+        }"
       />
     </div>
     <div class="mb-3">

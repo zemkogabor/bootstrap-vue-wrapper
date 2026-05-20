@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts">
-import { useValidator } from '@zemkogabor/vue-form-validator'
-import { ref, type Ref, defineComponent } from 'vue'
+import { type CustomValidatorMessages, useValidator } from '@zemkogabor/vue-form-validator'
+import { ref, type Ref, defineComponent, type PropType } from 'vue'
 
 export default defineComponent({
   name: 'BsRadio',
@@ -88,14 +88,21 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * Custom validator messages, e.g. minlength validation with custom message
+     */
+    customValidatorMessages: {
+      type: Object as PropType<CustomValidatorMessages>,
+      default: undefined,
+    },
   },
   emits: ['update:modelValue'],
-  setup() {
+  setup(props) {
     const inputRef: Ref<HTMLInputElement | null> = ref(null)
 
     return {
       inputRef,
-      validator: useValidator(inputRef),
+      validator: useValidator(inputRef, props.customValidatorMessages),
     }
   },
   computed: {

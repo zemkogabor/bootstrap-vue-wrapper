@@ -973,9 +973,9 @@
   integrity sha512-aK7feIWPXFSUhsCP9PFqPyFOcz4ENkb8hZ2pneL6m2UjCkccvaOhC/5KCKluuBufvp2KzkbdA2W2pk20vLzu3g==
 
 "@zemkogabor/vue-form-validator@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@zemkogabor/vue-form-validator/-/vue-form-validator-1.2.0.tgz#9151dd949eb49551f696d9552b4ccfe801add01c"
-  integrity sha512-/qEBiwZz3fBwtCBPJtGEX8KuMyY3b/34foMq6cGEFbGk9c2Ug0Y0RmKwfbL+4TP8krdpB+bEnluJbuW2Yr8u+g==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@zemkogabor/vue-form-validator/-/vue-form-validator-1.2.1.tgz#3fa8c4955ee75d61057cec32869937b600f7c4eb"
+  integrity sha512-99cvaKUu6lh/6TybpQypO0xc7vG+ktqEb1DHphQoFWkIBBpMlys7Fx01SS1mexojjKGbSrLW8a4ppIJyEoi1jQ==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -1841,11 +1841,6 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
-
-fast-uri@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-3.1.0.tgz#66eecff6c764c0df9b762e62ca7edcfb53b4edfa"
-  integrity sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==
 
 fastq@^1.6.0:
   version "1.20.1"
