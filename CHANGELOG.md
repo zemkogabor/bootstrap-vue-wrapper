@@ -1,5 +1,32 @@
 # Changelog
 
+## [3.2.0] - 2026-09-10
+**New Features:**
+- `BsTable` header slots: the previously unscoped `tr` slot has been replaced by a scoped `th` slot that receives the
+  column (`<template #th="{ field }">`), so the header content can be customized per column. A new `th-append` slot
+  (also scoped with `field`) renders after the default header content, which is handy for adding an icon or a tooltip
+  next to a single column's label without re-implementing the label and the sort icon.
+
+**Migrate from 3.1.x to 3.2.0:**
+
+The `tr` slot no longer exists. If you used it, rename it to `th` (it is now scoped):
+```
+<bs-table :fields="fields" :items="items">
+  <template #th="{ field }">
+    {{ field.label }}
+  </template>
+</bs-table>
+```
+
+To only add something after a column's label, use `th-append` instead:
+```
+<bs-table :fields="fields" :items="items">
+  <template #th-append="{ field }">
+    <i v-if="field.key === 'shelfLocation'" class="bi bi-info-circle" @click.stop="showHelp" />
+  </template>
+</bs-table>
+```
+
 ## [3.0.0] - 2026-01-24
 **Major Changes**
 - Drop vue-i18n and vue-router dependencies: The library has removed its dependencies on vue-i18n and vue-router to streamline the codebase and reduce bundle size. Users are encouraged to implement their own internationalization and routing solutions as needed.

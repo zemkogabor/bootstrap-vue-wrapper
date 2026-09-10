@@ -192,6 +192,14 @@
     row-clickable
     @row-clicked="onRowClicked"
   >
+    <template #th-append="{ field }">
+      <i
+        v-if="field.key === 'name'"
+        class="bi bi-info-circle"
+        title="Header slot example"
+        @click.stop
+      />
+    </template>
     <template #td="data">
       <span v-if="data.field === 'action'">
         <button type="button" class="btn btn-primary" @click.stop="onTableButtonClicked">Download</button>

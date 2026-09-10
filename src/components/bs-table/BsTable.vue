@@ -11,10 +11,11 @@
             }"
             @click="onHeadClick(field)"
           >
-            <slot name="tr">
+            <slot name="th" :field="field">
               {{ field.label }}
               <i v-if="isActiveOrderBy(field.key) && sortDesc !== undefined" :class="getSortIconClass()" />
             </slot>
+            <slot name="th-append" :field="field" />
           </th>
         </template>
       </tr>
